@@ -6,7 +6,7 @@ import statistics
 import urllib.parse
 from datetime import date
 
-from fetcher import http
+from fetcher import net as http
 
 # CFTC Traders in Financial Futures, futures only (Socrata dataset).
 CFTC_URL = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"

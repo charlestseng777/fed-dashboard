@@ -13,7 +13,7 @@ import os
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 
-from fetcher import http
+from fetcher import net as http
 
 CSV_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={start}"
 API_URL = ("https://api.stlouisfed.org/fred/series/observations?series_id={sid}"

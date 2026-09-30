@@ -24,7 +24,7 @@ import urllib.parse
 from datetime import date, timedelta
 from pathlib import Path
 
-from fetcher import http
+from fetcher import net as http
 
 BASE = "https://api.refinitiv.com"
 TOKEN_V1 = f"{BASE}/auth/oauth2/v1/token"

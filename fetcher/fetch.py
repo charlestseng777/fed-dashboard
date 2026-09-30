@@ -33,7 +33,7 @@ DATA_DIR = ROOT / "data"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from fetcher import fed, flows, fred, http, refinitiv  # noqa: E402
+from fetcher import fed, flows, fred, net as http, refinitiv  # noqa: E402
 
 log = http.log
 
