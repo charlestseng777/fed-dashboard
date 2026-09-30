@@ -39,14 +39,20 @@ def get(url: str, headers: dict[str, str] | None = None, retries: int = RETRIES)
             with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
                 return resp.read()
         except urllib.error.HTTPError as exc:
-            last = exc
+            # Keep the response body: APIs explain 400/403s there.
+            try:
+                detail = exc.read().decode("utf-8", errors="replace")[:300].strip()
+            except Exception:  # noqa: BLE001
+                detail = ""
+            last = RuntimeError(f"HTTP {exc.code}{': ' + detail if detail else ''}")
             # 4xx other than rate limiting won't get better on retry.
             if 400 <= exc.code < 500 and exc.code != 429:
                 break
         except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
             last = exc
         time.sleep(2 ** (attempt + 1))
-    raise RuntimeError(f"GET {url} failed: {last}")
+    # Report the host/path only — query strings can be long and add nothing.
+    raise RuntimeError(f"GET {url.split('?')[0]} failed: {last}")
 
 
 def get_text(url: str, headers: dict[str, str] | None = None) -> str:

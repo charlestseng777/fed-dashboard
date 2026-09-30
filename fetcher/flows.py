@@ -154,21 +154,14 @@ def _pctile(values: list) -> float | None:
 # --------------------------------------------------------------------------
 
 AUCTIONS_URL = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query"
-AUCTION_FIELDS = [
-    "cusip", "security_type", "security_term", "auction_date", "issue_date",
-    "high_yield", "bid_to_cover_ratio", "offering_amt", "total_accepted",
-    "primary_dealer_accepted", "direct_bidder_accepted", "indirect_bidder_accepted",
-    "reopening", "tips", "floating_rate",
-]
 COUPON_TYPES = {"Note", "Bond"}
 
 
 def treasury_auctions(today: date, since: str) -> dict:
     query = {
-        "fields": ",".join(AUCTION_FIELDS),
         "filter": f"auction_date:gte:{since}",
         "sort": "-auction_date",
-        "page[size]": "1000",
+        "page[size]": "500",
     }
     payload = http.get_json(f"{AUCTIONS_URL}?{urllib.parse.urlencode(query, safe=':,[]')}")
     rows = payload.get("data", [])

@@ -114,25 +114,58 @@ def cleveland_nowcast() -> dict:
     series names and the final value are relied on.
     """
     result: dict = {"monthly": [], "quarterly": []}
-    for url, bucket in zip(CLEVELAND_URLS, ("monthly", "quarterly")):
+    for url, bucket, keep in zip(CLEVELAND_URLS, ("monthly", "quarterly"), (2, 2)):
         payload = http.get_json(url)
         charts = payload if isinstance(payload, list) else [payload]
+        entries = []
         for chart in charts:
             meta = chart.get("chart", {}) if isinstance(chart, dict) else {}
             period = _clean(meta.get("subcaption") or meta.get("caption") or "")
             values: dict[str, float] = {}
+            actual = False
             for ds in (chart.get("dataset") or []) if isinstance(chart, dict) else []:
                 name = _clean(ds.get("seriesname", ""))
                 points = [p.get("value") for p in ds.get("data", []) if isinstance(p, dict)]
                 points = [float(p) for p in points if p not in (None, "")]
-                if name and points:
-                    values[name] = round(points[-1], 2)
-            updated = _clean(meta.get("xaxisname", "") or meta.get("caption", ""))
+                if not name or not points:
+                    continue
+                # "Actual …" series are the official print once it's out —
+                # a period that has them is history, not a nowcast.
+                if name.lower().startswith("actual"):
+                    actual = True
+                    continue
+                values[name] = round(points[-1], 2)
             if values:
-                result[bucket].append({"period": period, "values": values, "note": updated})
+                entries.append({"period": _period_label(period), "sort": _period_key(period),
+                                "values": values, "final": actual})
+        entries.sort(key=lambda e: e["sort"])
+        live = [e for e in entries if not e["final"]] or entries
+        result[bucket] = [{"period": e["period"], "values": e["values"]} for e in live[-keep:]][::-1]
     if not result["monthly"] and not result["quarterly"]:
         raise RuntimeError("Cleveland nowcast JSON had no recognisable series")
     return result
+
+
+MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July",
+               "August", "September", "October", "November", "December"]
+
+
+def _period_key(text: str) -> tuple:
+    """'2026-9' / '2026:Q3' / '2026 Q3' -> sortable tuple."""
+    m = re.search(r"(\d{4})\D*?(Q?)(\d{1,2})", text)
+    if not m:
+        return (0, 0)
+    return (int(m.group(1)), int(m.group(3)) * (3 if m.group(2) else 1))
+
+
+def _period_label(text: str) -> str:
+    m = re.search(r"(\d{4})\D*?(Q?)(\d{1,2})", text)
+    if not m:
+        return text
+    year, q, n = m.group(1), m.group(2), int(m.group(3))
+    if q:
+        return f"{year} Q{n}"
+    return f"{MONTH_NAMES[n - 1]} {year}" if 1 <= n <= 12 else text
 
 
 def _clean(text: str) -> str:
@@ -229,12 +262,21 @@ RELEASE_MATCH = [
     ("Producer Price Index", "PPI", "BLS"),
     ("Personal Income and Outlays", "PCE inflation", "BEA"),
     ("Gross Domestic Product", "GDP", "BEA"),
+    ("Advance Monthly Sales for Retail", "Retail sales", "Census"),
+    ("Industrial Production and Capacity Utilization", "Industrial production", "Fed Board"),
 ]
 
 
-def upcoming_releases(meetings: list[dict], today: date, horizon_days: int = 45) -> list[dict]:
+def upcoming_releases(meetings: list[dict], today: date, fred_calendar=None,
+                      horizon_days: int = 45) -> list[dict]:
     end = today + timedelta(days=horizon_days)
     found: dict[str, dict] = {}
+
+    def consider(when: date, title: str, source: str | None) -> None:
+        for fragment, label, src in RELEASE_MATCH:
+            if (source is None or src == source) and fragment.lower() in title.lower():
+                if label not in found or when.isoformat() < found[label]["date"]:
+                    found[label] = {"id": label, "label": label, "date": when.isoformat(), "source": src}
 
     for source, url in ICS_FEEDS.items():
         try:
@@ -252,13 +294,17 @@ def upcoming_releases(meetings: list[dict], today: date, horizon_days: int = 45)
                 when = datetime.strptime(digits, "%Y%m%d").date()
             except ValueError:
                 continue
-            if not today <= when <= end:
-                continue
-            for fragment, label, src in RELEASE_MATCH:
-                if src == source and fragment.lower() in summary.lower():
-                    # Keep only the next occurrence of each release.
-                    if label not in found or when.isoformat() < found[label]["date"]:
-                        found[label] = {"id": label, "label": label, "date": when.isoformat(), "source": source}
+            if today <= when <= end:
+                consider(when, summary, source)
+
+    # FRED's release calendar covers every agency (and isn't bot-blocked the
+    # way bls.gov is), so use it to fill whatever the iCal feeds missed.
+    if fred_calendar:
+        try:
+            for iso, name in fred_calendar(today.isoformat(), end.isoformat()):
+                consider(date.fromisoformat(iso), name, None)
+        except Exception as exc:  # noqa: BLE001
+            http.log(f"FRED release calendar failed: {exc}")
 
     # Weekly claims: every Thursday.
     d = today + timedelta(days=(3 - today.weekday()) % 7)

@@ -58,22 +58,28 @@ def series(sid: str, start: str) -> dict[str, float]:
     return out
 
 
-def many(ids: dict[str, str], start: str, status: dict) -> dict[str, dict[str, float]]:
-    """Fetch {name: sid} concurrently. Failures are logged and recorded in
-    `status` rather than raised, so one dead series can't sink the run."""
+def many(ids: dict[str, str | list[str]], start: str, status: dict) -> dict[str, dict[str, float]]:
+    """Fetch {name: sid} concurrently. A value may be a list of candidate ids
+    (FRED occasionally renames series); the first that returns data wins.
+    Failures are logged and recorded in `status` rather than raised, so one
+    dead series can't sink the run."""
     results: dict[str, dict[str, float]] = {}
 
     def one(item):
-        name, sid = item
-        try:
-            return name, series(sid, start), None
-        except Exception as exc:  # noqa: BLE001 - recorded, not swallowed
-            return name, {}, str(exc)
+        name, sids = item
+        error = None
+        for sid in ([sids] if isinstance(sids, str) else sids):
+            try:
+                data = series(sid, start)
+                if data:
+                    return name, sid, data, None
+            except Exception as exc:  # noqa: BLE001 - recorded, not swallowed
+                error = str(exc)
+        return name, sids if isinstance(sids, str) else sids[0], {}, error or "no data"
 
     with ThreadPoolExecutor(max_workers=6) as pool:
-        for name, data, error in pool.map(one, ids.items()):
+        for name, sid, data, error in pool.map(one, ids.items()):
             results[name] = data
-            sid = ids[name]
             if error:
                 http.log(f"FRED {sid} failed: {error}")
                 status[f"fred:{sid}"] = {"ok": False, "error": error[:200]}
@@ -81,3 +87,18 @@ def many(ids: dict[str, str], start: str, status: dict) -> dict[str, dict[str, f
                 last = max(data) if data else None
                 status[f"fred:{sid}"] = {"ok": bool(data), "last": last}
     return results
+
+
+RELEASE_DATES_URL = ("https://api.stlouisfed.org/fred/releases/dates?api_key={key}&file_type=json"
+                     "&realtime_start={start}&realtime_end={end}"
+                     "&include_release_dates_with_no_data=true&limit=1000&sort_order=asc")
+
+
+def release_dates(start: str, end: str) -> list[tuple[str, str]]:
+    """Scheduled release dates [(date, release_name)] from FRED's release
+    calendar. Needs FRED_API_KEY (free); returns [] without one."""
+    key = os.environ.get("FRED_API_KEY", "").strip()
+    if not key:
+        return []
+    payload = http.get_json(RELEASE_DATES_URL.format(key=urllib.parse.quote(key), start=start, end=end))
+    return [(d["date"], d.get("release_name", "")) for d in payload.get("release_dates", [])]

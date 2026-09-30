@@ -92,7 +92,8 @@ def _pick(fields: dict) -> float | None:
 
 
 def _history(token: str, ric: str, start: str) -> dict[str, float]:
-    query = urllib.parse.urlencode({"interval": "P1D", "start": start, "fields": "TRDPRC_1,SETTLE,MID_PRICE,BID,ASK"})
+    # No field list: a field the licence doesn't cover fails the whole request.
+    query = urllib.parse.urlencode({"interval": "P1D", "start": start})
     url = HISTORY.format(ric=urllib.parse.quote(ric, safe="")) + f"?{query}"
     payload = http.get_json(url, {"Authorization": f"Bearer {token}"})
     block = payload[0] if isinstance(payload, list) and payload else payload
@@ -104,6 +105,22 @@ def _history(token: str, ric: str, start: str) -> dict[str, float]:
         v = _pick(rec) or rec.get("MID_PRICE")
         if day and isinstance(v, (int, float)):
             out[day] = float(v)
+    return out
+
+
+def _last_closes(token: str, rics: list[str], start: str) -> dict[str, float]:
+    out: dict[str, float] = {}
+    errors = []
+    for ric in rics:
+        try:
+            hist = _history(token, ric, start)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{ric}: {exc}")
+            continue
+        if hist:
+            out[ric] = hist[max(hist)]
+    if errors:
+        http.log(f"RDP history failed for {len(errors)} RIC(s); first: {errors[0]}")
     return out
 
 
@@ -164,7 +181,18 @@ def policy_pricing(config_path: Path, meetings: list[str], effr: float | None, t
 
     ff_rics = [f"{cfg['fed_funds_root']}c{i}" for i in range(1, cfg.get("fed_funds_contracts", 13) + 1)]
     ois = cfg.get("sofr_ois", {})
-    snap = _snapshot(token, ff_rics + list(ois.values()))
+    rics = ff_rics + list(ois.values())
+    try:
+        snap = _snapshot(token, rics)
+        method = "snapshot"
+    except RuntimeError as exc:
+        # Many RDP licences cover historical pricing but not the real-time
+        # snapshot service (403). Yesterday's close is fine for a daily page.
+        http.log(f"RDP snapshot unavailable ({exc}); using historical pricing")
+        snap = _last_closes(token, rics, (today - timedelta(days=10)).isoformat())
+        method = "historical"
+    if not snap:
+        raise RuntimeError("RDP returned no prices for any RIC")
 
     futures: dict[tuple[int, int], float] = {}
     strip = []
@@ -199,6 +227,7 @@ def policy_pricing(config_path: Path, meetings: list[str], effr: float | None, t
 
     return {
         "source": "refinitiv",
+        "method": method,
         "as_of": today.isoformat(),
         "reference_rate": effr,
         "meetings": path,

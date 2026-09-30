@@ -59,7 +59,7 @@ FRED_MONTHLY = {
     "retail_ex_lvl": "RSXFS",
     "ip_idx": "INDPRO",
     "philly": "GACDFSA066MSFRBPHI",
-    "empire": "GACDINA066MSFRBNY",
+    "empire": ["GACDISA066MSFRBNY", "GACDINA066MSFRBNY"],
 }
 FRED_QUARTERLY = {
     "gdp_growth": "A191RL1Q225SBEA",
@@ -459,7 +459,7 @@ def main() -> int:
 
     log("Fed news + release calendar …")
     news = attempt("fed:news", fed.fed_news, prev_meta.get("fed_news", []))
-    releases = attempt("calendars", lambda: fed.upcoming_releases(meetings, today),
+    releases = attempt("calendars", lambda: fed.upcoming_releases(meetings, today, fred.release_dates),
                        prev_meta.get("upcoming_releases", []))
 
     # ---- headline snapshot ------------------------------------------------
