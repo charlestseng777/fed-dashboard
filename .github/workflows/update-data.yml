@@ -29,20 +29,23 @@ jobs:
       run: ${{ steps.check.outputs.run }}
     steps:
       - id: check
-        # Scheduled runs go ahead only between 23:40 and 00:40 UK time: the
-        # right slot for the season lands there (GitHub can start scheduled
-        # jobs a few minutes late), the other one lands an hour off and is
-        # skipped. Manual runs always go ahead.
+        # Each night both UTC slots fire; only the one that is 23:45 UK time
+        # in the current season goes ahead: 22:45 UTC while the UK is on BST
+        # (+0100), 23:45 UTC while it is on GMT (+0000). Decided by which cron
+        # triggered the run, not the clock, because GitHub can start
+        # scheduled runs hours late. Manual runs always go ahead.
         run: |
           if [ "${{ github.event_name }}" != "schedule" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          now=$(TZ=Europe/London date +%H%M)
-          echo "UK time is ${now}"
-          if [ "$now" -ge 2340 ] || [ "$now" -lt 40 ]; then
+          offset=$(TZ=Europe/London date +%z)
+          slot="${{ github.event.schedule }}"
+          echo "UK offset ${offset}, triggered by '${slot}'"
+          if { [ "$offset" = "+0100" ] && [ "$slot" = "45 22 * * 1-5" ]; } || \
+             { [ "$offset" = "+0000" ] && [ "$slot" = "45 23 * * 1-5" ]; }; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Not 23:45 UK time in this season; skipping."
+            echo "Not this season's 23:45 UK slot; skipping."
             echo "run=false" >> "$GITHUB_OUTPUT"
           fi
 
