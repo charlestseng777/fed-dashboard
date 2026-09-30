@@ -168,11 +168,14 @@ def treasury_auctions(today: date, since: str) -> dict:
     if not rows:
         raise RuntimeError("Fiscal Data auctions query returned no rows")
 
+    flags = sorted(k for k in rows[0] if any(t in k.lower() for t in ("tips", "inflation", "float", "frn")))
+    http.log(f"auction flag fields: {flags or 'none'}")
+
     coupons = []
     for r in rows:
         if r.get("security_type") not in COUPON_TYPES:
             continue
-        if (r.get("tips") or "").lower() == "yes" or (r.get("floating_rate") or "").lower() == "yes":
+        if _is_tips_or_frn(r):
             continue
         accepted = _num(r.get("total_accepted"))
         entry = {
@@ -205,6 +208,20 @@ def treasury_auctions(today: date, since: str) -> dict:
         prior.append(c)
 
     return {"recent": list(reversed(done[-20:])), "upcoming": upcoming[:12]}
+
+
+def _is_tips_or_frn(r: dict) -> bool:
+    """TIPS and FRNs come through as security_type Note/Bond; the flag
+    field's name has varied across API versions (tips, inflation_index_security,
+    floating_rate, frn_index…), so check any field that looks like one."""
+    if "tips" in str(r.get("security_type", "")).lower() or "frn" in str(r.get("security_type", "")).lower():
+        return True
+    for key, value in r.items():
+        k = key.lower()
+        if any(tag in k for tag in ("tips", "inflation_index", "floating_rate", "frn")):
+            if str(value).strip().lower() in ("yes", "y", "true"):
+                return True
+    return False
 
 
 def _tenor(term: str | None) -> str:

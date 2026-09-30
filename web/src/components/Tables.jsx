@@ -120,7 +120,7 @@ export function SofrOisTable({ pricing }) {
   const curve = pricing?.sofr_ois ?? []
   if (!curve.length) return null
   return (
-    <Table title="SOFR OIS curve" subtitle="Refinitiv snapshot, percent.">
+    <Table title="SOFR OIS curve" subtitle={`Refinitiv ${pricing.method === 'historical' ? 'latest close' : 'snapshot'}, percent.`}>
       <thead className="border-b border-hairline"><tr><Th>Tenor</Th><Th right>Rate</Th><Th right>vs EFFR</Th></tr></thead>
       <tbody>
         {curve.map((p) => (
