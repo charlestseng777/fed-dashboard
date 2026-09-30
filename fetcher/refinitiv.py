@@ -93,7 +93,8 @@ def _pick(fields: dict) -> float | None:
 
 def _history(token: str, ric: str, start: str) -> dict[str, float]:
     # No field list: a field the licence doesn't cover fails the whole request.
-    query = urllib.parse.urlencode({"interval": "P1D", "start": start})
+    # RDP returns only 20 rows unless asked for more.
+    query = urllib.parse.urlencode({"interval": "P1D", "start": start, "count": "1000"})
     url = HISTORY.format(ric=urllib.parse.quote(ric, safe="")) + f"?{query}"
     payload = http.get_json(url, {"Authorization": f"Bearer {token}"})
     block = payload[0] if isinstance(payload, list) and payload else payload
@@ -151,7 +152,13 @@ def meeting_path(futures: dict[tuple[int, int], float], meetings: list[str], cur
         d = date.fromisoformat(iso)
         if d >= today:
             by_month[(d.year, d.month)] = d
+    first = min(by_month) if by_month else None
     for (y, m) in sorted(futures):
+        # Until the first upcoming meeting the rate is known (today's EFFR);
+        # the current month's contract also averages in days already past,
+        # possibly before an earlier decision, so it must not reset `rate`.
+        if first is None or (y, m) < first:
+            continue
         implied = 100 - futures[(y, m)]
         meeting = by_month.get((y, m))
         n = calendar.monthrange(y, m)[1]
