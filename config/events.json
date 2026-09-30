@@ -1,0 +1,19 @@
+{
+  "_comment": "Context markers drawn on the monthly charts. Rate changes are derived from the target range automatically and are not listed here.",
+  "events": [
+    {"id": "covid", "date": "2020-03", "category": "shock", "label": "COVID-19 shock",
+     "description": "Emergency cuts take the target range to 0–0.25% and the Fed restarts large-scale asset purchases."},
+    {"id": "fait", "date": "2020-08", "category": "policy", "label": "Flexible average inflation targeting",
+     "description": "Revised framework: the Fed aims for inflation moderately above 2% for some time after periods of undershooting."},
+    {"id": "liftoff", "date": "2022-03", "category": "policy", "label": "Hiking cycle begins",
+     "description": "First rate rise since 2018, as inflation runs well above target."},
+    {"id": "svb", "date": "2023-03", "category": "shock", "label": "Regional bank stress",
+     "description": "Silicon Valley Bank fails; the Fed sets up the Bank Term Funding Program."},
+    {"id": "peak", "date": "2023-07", "category": "policy", "label": "Final hike of the cycle",
+     "description": "Target range reaches 5.25–5.50%, where it stays for over a year."},
+    {"id": "first-cut", "date": "2024-09", "category": "policy", "label": "Easing begins",
+     "description": "A 50bp cut starts the easing cycle."},
+    {"id": "tariffs", "date": "2025-04", "category": "shock", "label": "Tariff shock",
+     "description": "Broad US tariff increases announced, raising the near-term inflation outlook and growth risks."}
+  ]
+}

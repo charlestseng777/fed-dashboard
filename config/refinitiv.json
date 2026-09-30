@@ -1,0 +1,16 @@
+{
+  "_comment": "RICs used when Refinitiv credentials are configured. Fed funds futures continuation chain is <root>c1..cN (FFc1 = front month). Adjust the SOFR OIS RICs if your entitlements use a different contributor.",
+  "fed_funds_root": "FF",
+  "fed_funds_contracts": 13,
+  "sofr_ois": {
+    "1M": "USDSROIS1M=",
+    "3M": "USDSROIS3M=",
+    "6M": "USDSROIS6M=",
+    "1Y": "USDSROIS1Y=",
+    "2Y": "USDSROIS2Y=",
+    "3Y": "USDSROIS3Y=",
+    "5Y": "USDSROIS5Y=",
+    "10Y": "USDSROIS10Y=",
+    "30Y": "USDSROIS30Y="
+  }
+}

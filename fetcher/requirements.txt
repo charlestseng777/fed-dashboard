@@ -1,0 +1,2 @@
+# Everything else is standard library. xlrd reads the NY Fed's ACM .xls file.
+xlrd>=2.0,<3.0

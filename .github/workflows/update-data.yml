@@ -1,0 +1,90 @@
+name: Update data
+
+on:
+  schedule:
+    # Cron is UTC; US Eastern is UTC-4 (summer) / UTC-5 (winter). Each slot
+    # lands after the relevant release in both.
+    #   BLS/BEA releases, 08:30 ET  -> 12:30/13:30 UTC; FRED picks up by ~09:00 ET
+    #   FOMC decision, 14:00 ET     -> 18:00/19:00 UTC
+    #   H.15 yields post ~16:15 ET  -> 20:15/21:15 UTC
+    - cron: '0 14 * * 1-5'   # morning: data releases
+    - cron: '30 19 * * 1-5'  # afternoon: FOMC days
+    - cron: '45 22 * * 1-5'  # evening: day's Treasury yields, SOFR, breakevens
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Write output and redeploy even if nothing changed'
+        type: boolean
+        default: false
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r fetcher/requirements.txt
+
+      - name: Fetch data
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          REFINITIV_CLIENT_ID: ${{ secrets.REFINITIV_CLIENT_ID }}
+          REFINITIV_CLIENT_SECRET: ${{ secrets.REFINITIV_CLIENT_SECRET }}
+          REFINITIV_USERNAME: ${{ secrets.REFINITIV_USERNAME }}
+          REFINITIV_PASSWORD: ${{ secrets.REFINITIV_PASSWORD }}
+          REFINITIV_APP_KEY: ${{ secrets.REFINITIV_APP_KEY }}
+        run: python fetcher/fetch.py ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit updated data
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain data)" ]; then
+            echo "No data changes — nothing to commit."
+            echo "changed=${{ inputs.force && 'true' || 'false' }}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          LATEST=$(python -c "import json;print(json.load(open('data/meta.json'))['latest_daily'])")
+          git commit -m "data: refresh through ${LATEST}"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: fetch
+    if: needs.fetch.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main   # pick up the commit the fetch job just pushed
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build the dashboard
+        run: |
+          npm --prefix web ci
+          npm --prefix web run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/dist
