@@ -59,7 +59,11 @@ def _token() -> str:
             "password": env["REFINITIV_PASSWORD"],
             "client_id": env["REFINITIV_APP_KEY"],
             "scope": "trapi",
-            "takeExclusiveSignOnControl": "true",
+            # Never take over the session: "true" would sign the account's
+            # owner out of Workspace every time the workflow runs. With
+            # "false", RDP refuses the login instead if the account is busy,
+            # and the fetcher keeps the previous day's pricing.
+            "takeExclusiveSignOnControl": "false",
         })
     token = payload.get("access_token")
     if not token:

@@ -444,6 +444,11 @@ def main() -> int:
                               [m["date"] for m in meetings], effr, today,
                               (today - timedelta(days=400)).isoformat()),
                           None)
+        if pricing is None and (prev_meta.get("policy_pricing") or {}).get("source") == "refinitiv":
+            # Login refused (e.g. the account is signed in to Workspace):
+            # keep yesterday's futures pricing, flagged stale in the footer,
+            # rather than dropping to the bill-curve proxy.
+            pricing = {**prev_meta["policy_pricing"], "stale": True}
     else:
         status["refinitiv:policy_pricing"] = {"ok": False, "error": "no credentials configured"}
     if pricing is None:
