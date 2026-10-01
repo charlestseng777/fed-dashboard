@@ -419,7 +419,16 @@ def main() -> int:
         acm = {row["date"]: {"acm_tp10": row.get("acm_tp10"), "acm_rn10": row.get("acm_rn10")}
                for row in old_daily.get("observations", []) if row.get("acm_tp10") is not None}
 
+    log("Fed Board fitted curves (1y1y forward, 2Y breakeven) …")
+    gsw = attempt("fedboard:gsw", lambda: fed.near_term_expectations(DAILY_START), {})
+    if not gsw:
+        old_daily = load_json(DATA_DIR / "daily.json", {}) or {}
+        gsw = {row["date"]: {k: row[k] for k in ("fwd_1y1y", "be_2y") if row.get(k) is not None}
+               for row in old_daily.get("observations", [])}
+
     daily = build_daily(raw_d, acm)
+    for row in daily:
+        row.update(gsw.get(row["date"], {}))
     daily_by_date = {row["date"]: row for row in daily}
     monthly = build_monthly(raw_m, daily_by_date)
     quarterly = build_quarterly(raw_q)
@@ -494,7 +503,7 @@ def main() -> int:
     snap = {}
     for key in ("ust_2y", "ust_5y", "ust_10y", "ust_30y", "s2s10", "s5s30", "acm_tp10", "acm_rn10",
                 "be_5y", "be_10y", "be_5y5y", "real_10y", "sofr", "effr", "ff_upper", "ff_lower",
-                "priced_12m_proxy", "gold"):
+                "priced_12m_proxy", "gold", "fwd_1y1y", "be_2y"):
         val, when = latest_value(daily, key)
         snap[key] = {"value": val, "date": when,
                      "chg_1w": r(val - v1, 3) if val is not None and (v1 := value_ago(daily, key, 7)) is not None else None,

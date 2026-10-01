@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useData } from './lib/useData.js'
 import { axisTick, axisTickDay, bp, dayLong, dayShort, monthLong, monthShort, pct, pp } from './lib/format.js'
 import {
-  BREAKEVEN_SERIES, CONTRACT_COLORS, CURVE_SERIES, GROWTH_SERIES, INFLATION_SERIES, LABOUR_SERIES,
+  BREAKEVEN_SERIES, CONTRACT_COLORS, CURVE_SERIES, NEAR_TERM_SERIES, GROWTH_SERIES, INFLATION_SERIES, LABOUR_SERIES,
   PALETTE, POSITIONING_SERIES, PRICED_SERIES, TERM_PREMIUM_SERIES, YIELD_SERIES,
 } from './lib/series.js'
 import { lastWith, pricedPath } from './lib/fedwatch.js'
@@ -365,20 +365,36 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 showLatest
               />
               <SeriesChart
-                title="Inflation compensation"
-                subtitle="TIPS breakevens and the 10Y real yield (percent, left), with gold ($/oz, right; COMEX front-month futures via Yahoo Finance, or spot XAU/USD if Yahoo is unavailable) as a market-based inflation hedge. The 5y5y forward is the market's read on long-run inflation expectations."
+                title="Near-term policy and inflation expectations"
+                subtitle="The 1y1y Treasury forward (the 1-year rate one year ahead: where the market sees policy settling after the next year) and 2Y breakeven inflation, percent. From the Fed Board's fitted Treasury and TIPS curves, refreshed roughly weekly."
                 data={d.view}
                 fullData={daily}
-                series={BREAKEVEN_SERIES}
+                series={NEAR_TERM_SERIES}
                 syncId="rates"
                 xFormat={axisTickDay}
                 tooltipDate={dayLong}
                 leftFormat={pctTick}
-                rightFormat={(v) => `$${v.toLocaleString()}`}
                 valueFormat={(v) => pct(v, 2)}
-                refLines={[{ y: 2, label: '2%' }]}
+                refLines={[{ y: 2, label: '2% target' }]}
+                decisions={decisions}
+                showLatest
               />
             </div>
+
+            <SeriesChart
+              title="Inflation compensation"
+              subtitle="TIPS breakevens and the 10Y real yield (percent, left), with gold ($/oz, right; COMEX front-month futures via Yahoo Finance, or spot XAU/USD if Yahoo is unavailable) as a market-based inflation hedge. The 5y5y forward is the market's read on long-run inflation expectations."
+              data={d.view}
+              fullData={daily}
+              series={BREAKEVEN_SERIES}
+              syncId="rates"
+              xFormat={axisTickDay}
+              tooltipDate={dayLong}
+              leftFormat={pctTick}
+              rightFormat={(v) => `$${v.toLocaleString()}`}
+              valueFormat={(v) => pct(v, 2)}
+              refLines={[{ y: 2, label: '2%' }]}
+            />
 
             <CurveSnapshot snapshot={snap} />
           </>
@@ -440,6 +456,7 @@ const SOURCE_LABELS = {
   'nyfed:acm': 'NY Fed ACM term premium',
   'clevelandfed:nowcast': 'Cleveland Fed nowcast',
   'refinitiv:policy_pricing': 'Refinitiv futures / OIS',
+  'fedboard:gsw': 'Fed Board fitted curves (1y1y, 2Y BE)',
   'yahoo:gold': 'Gold (Yahoo Finance)',
   'stooq:gold': 'Gold (Stooq fallback)',
   'cftc:tff': 'CFTC positioning',

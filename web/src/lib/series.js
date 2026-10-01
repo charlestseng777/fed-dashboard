@@ -90,6 +90,14 @@ export const BREAKEVEN_SERIES = [
     format: (v) => `$${v.toLocaleString(undefined, { maximumFractionDigits: 0 })}` },
 ]
 
+// 1y1y Treasury forward (Fed Board GSW SVEN1F01) and 2Y zero-coupon TIPS
+// breakeven (GSW BKEVEN02); Fed funds for context.
+export const NEAR_TERM_SERIES = [
+  { id: 'fwd_1y1y', label: '1y1y Treasury forward', short: '1y1y fwd', color: P.blue, width: 2, locked: true },
+  { id: 'be_2y', label: '2Y breakeven inflation', short: '2Y BE', color: P.orange, width: 2, locked: true },
+  { id: 'ff_upper', label: 'Fed funds (upper)', short: 'Fed funds', color: P.neutral, width: 1.5, step: true },
+]
+
 export const PRICED_SERIES = [
   { id: 'priced_12m', label: 'Change priced over next 12m (bp)', short: 'Priced 12m', color: P.blue, width: 2, locked: true },
 ]

@@ -326,3 +326,63 @@ def _ics_field(event: str, name: str) -> str | None:
     unfolded = re.sub(r"\r?\n[ \t]", "", event)
     m = re.search(rf"^{name}(?:;[^:\r\n]*)?:(.*)$", unfolded, re.MULTILINE)
     return m.group(1).strip() if m else None
+
+
+# --------------------------------------------------------------------------
+# Fed Board fitted yield curves (Gürkaynak-Sack-Wright)
+# --------------------------------------------------------------------------
+
+GSW_NOMINAL_URL = "https://www.federalreserve.gov/data/yield-curve-tables/feds200628.csv"
+GSW_TIPS_URL = "https://www.federalreserve.gov/data/yield-curve-tables/feds200805.csv"
+
+
+def gsw_columns(url: str, columns: dict[str, str], start: str) -> dict[str, dict[str, float]]:
+    """Selected columns from one of the Board's fitted-curve CSVs.
+
+    The files open with a block of description lines; the data header is the
+    first line starting 'Date,'. Returns {'YYYY-MM-DD': {name: value}} for
+    rows on or after `start`, with 'NA'/blank cells skipped.
+    """
+    text = http.get_text(url)
+    lines = text.splitlines()
+    try:
+        head = next(i for i, ln in enumerate(lines) if ln.strip().lower().startswith("date,"))
+    except StopIteration:
+        raise RuntimeError(f"{url.rsplit('/', 1)[-1]}: no 'Date,' header line") from None
+    header = [h.strip().upper() for h in lines[head].split(",")]
+    idx = {name: header.index(col.upper()) for name, col in columns.items() if col.upper() in header}
+    missing = [col for name, col in columns.items() if name not in idx]
+    if missing:
+        raise RuntimeError(f"{url.rsplit('/', 1)[-1]}: columns not found {missing}")
+
+    out: dict[str, dict[str, float]] = {}
+    for ln in lines[head + 1:]:
+        parts = ln.split(",")
+        day = parts[0].strip()
+        if len(day) != 10 or day < start:
+            continue
+        row = {}
+        for name, i in idx.items():
+            try:
+                v = parts[i].strip()
+                if v and v.upper() != "NA":
+                    row[name] = round(float(v), 3)
+            except (IndexError, ValueError):
+                continue
+        if row:
+            out[day] = row
+    if not out:
+        raise RuntimeError(f"{url.rsplit('/', 1)[-1]}: no rows since {start}")
+    return out
+
+
+def near_term_expectations(start: str) -> dict[str, dict[str, float]]:
+    """1y1y Treasury forward (nominal GSW SVEN1F01) and 2Y zero-coupon TIPS
+    breakeven (GSW BKEVEN02), merged by date."""
+    nominal = gsw_columns(GSW_NOMINAL_URL, {"fwd_1y1y": "SVEN1F01"}, start)
+    tips = gsw_columns(GSW_TIPS_URL, {"be_2y": "BKEVEN02"}, start)
+    merged: dict[str, dict[str, float]] = {}
+    for src in (nominal, tips):
+        for day, row in src.items():
+            merged.setdefault(day, {}).update(row)
+    return merged
