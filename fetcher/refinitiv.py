@@ -39,6 +39,8 @@ PRICE_FIELDS = ["SETTLE", "TRDPRC_1", "HST_CLOSE", "PRIMACT_1", "CF_LAST", "BID"
 
 def configured() -> bool:
     env = os.environ
+    if env.get("REFINITIV_DISABLED", "").lower() == "true":
+        return False
     return bool(
         (env.get("REFINITIV_CLIENT_ID") and env.get("REFINITIV_CLIENT_SECRET"))
         or (env.get("REFINITIV_USERNAME") and env.get("REFINITIV_PASSWORD") and env.get("REFINITIV_APP_KEY"))

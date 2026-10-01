@@ -14,6 +14,10 @@ on:
         description: 'Write output and redeploy even if nothing changed'
         type: boolean
         default: false
+      refinitiv:
+        description: 'Log in to Refinitiv (untick to refresh without touching the Refinitiv session)'
+        type: boolean
+        default: true
 
 concurrency:
   group: update-data
@@ -68,6 +72,8 @@ jobs:
       - name: Fetch data
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          # Manual runs can untick "refinitiv" to refresh without logging in.
+          REFINITIV_DISABLED: ${{ inputs.refinitiv == false && 'true' || 'false' }}
           REFINITIV_CLIENT_ID: ${{ secrets.REFINITIV_CLIENT_ID }}
           REFINITIV_CLIENT_SECRET: ${{ secrets.REFINITIV_CLIENT_SECRET }}
           REFINITIV_USERNAME: ${{ secrets.REFINITIV_USERNAME }}

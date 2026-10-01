@@ -33,7 +33,7 @@ DATA_DIR = ROOT / "data"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from fetcher import fed, flows, fred, net as http, refinitiv  # noqa: E402
+from fetcher import fed, flows, fred, markets, net as http, refinitiv  # noqa: E402
 
 log = http.log
 
@@ -444,21 +444,25 @@ def main() -> int:
                               [m["date"] for m in meetings], effr, today,
                               (today - timedelta(days=400)).isoformat()),
                           None)
-        if pricing is None and (prev_meta.get("policy_pricing") or {}).get("source") == "refinitiv":
-            # Login refused (e.g. the account is signed in to Workspace):
-            # keep yesterday's futures pricing, flagged stale in the footer,
-            # rather than dropping to the bill-curve proxy.
-            pricing = {**prev_meta["policy_pricing"], "stale": True}
     else:
         status["refinitiv:policy_pricing"] = {"ok": False, "error": "no credentials configured"}
+    if pricing is None and (prev_meta.get("policy_pricing") or {}).get("source") == "refinitiv":
+        # Login refused (e.g. the account is signed in to Workspace) or this
+        # was a manual run told to skip Refinitiv: keep the last futures
+        # pricing, flagged stale in the footer, rather than drop to the proxy.
+        pricing = {**prev_meta["policy_pricing"], "stale": True}
     if pricing is None:
         pricing = proxy_pricing(daily, meetings, today)
 
-    # Spot gold (Refinitiv XAU=) rides on the pricing session; merge it into
-    # the daily panel, falling back to the last stored closes if this run
-    # couldn't log in.
-    gold = pricing.pop("gold_history", None) or {}
-    status["refinitiv:gold"] = {"ok": bool(gold)} if gold else {"ok": False, "error": "no fresh gold closes this run"}
+    # Gold: Yahoo Finance COMEX front-month futures (no login needed), then
+    # Refinitiv spot XAU= from the pricing session, then the last stored
+    # closes. Merged into the daily panel.
+    refinitiv_gold = pricing.pop("gold_history", None) or {}
+    log("Gold (Yahoo Finance) …")
+    gold = attempt("yahoo:gold", lambda: markets.yahoo_daily_closes("GC=F", DAILY_START), {})
+    status["gold_source"] = {"ok": True, "source": "yahoo" if gold else ("refinitiv" if refinitiv_gold else "previous")}
+    if not gold:
+        gold = refinitiv_gold
     if not gold:
         old_daily = load_json(DATA_DIR / "daily.json", {}) or {}
         gold = {row["date"]: row["gold"] for row in old_daily.get("observations", []) if row.get("gold") is not None}
