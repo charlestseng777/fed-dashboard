@@ -24,16 +24,26 @@ export default function SeriesChart({
   title, subtitle, data, series, syncId, xFormat, tooltipDate, leftFormat, rightFormat,
   valueFormat, refLines = [], events = [], decisions = [], onSelect, selected,
   height = 'h-[300px] sm:h-[340px]', header, children, footer, ariaLabel, showLatest = false,
+  fullData,
 }) {
   const [enabled, setEnabled] = useState(() => series.filter((s) => s.locked || s.on).map((s) => s.id))
   const [hoveredEvent, setHoveredEvent] = useState(null)
+  // Per-chart horizon. 'tab' follows the tab's shared date slider (`data`);
+  // the others zoom this chart alone over its full history (`fullData`).
+  const [horizon, setHorizon] = useState('tab')
+  const shown = useMemo(() => {
+    if (!fullData || horizon === 'tab') return data
+    const from = horizonStart(fullData, horizon)
+    const i = fullData.findIndex((row) => row.date >= from)
+    return i < 0 ? fullData : fullData.slice(i)
+  }, [data, fullData, horizon])
 
   const visible = useMemo(() => series.filter((s) => s.locked || enabled.includes(s.id)), [series, enabled])
   const hasRight = visible.some((s) => s.axis === 'right')
   const toggleable = series.some((s) => !s.locked)
 
-  const from = data[0]?.date
-  const to = data[data.length - 1]?.date
+  const from = shown[0]?.date
+  const to = shown[shown.length - 1]?.date
   const pointEvents = events.filter((e) => e.date >= from && e.date <= to)
   const shownDecisions = decisions.filter((d) => d.date >= from && d.date <= to)
 
@@ -44,17 +54,17 @@ export default function SeriesChart({
   const latest = useMemo(() => {
     if (!showLatest) return []
     return visible.map((s) => {
-      for (let i = data.length - 1; i >= 0; i -= 1) {
-        const v = data[i][s.id]
+      for (let i = shown.length - 1; i >= 0; i -= 1) {
+        const v = shown[i][s.id]
         if (v !== null && v !== undefined) {
           // Change over ~5 observations (a trading week on daily data).
-          const prev = data.slice(0, Math.max(0, i - 4)).reverse().find((r) => r[s.id] !== null && r[s.id] !== undefined)
-          return { series: s, index: i, date: data[i].date, value: v, change: prev ? v - prev[s.id] : null }
+          const prev = shown.slice(0, Math.max(0, i - 4)).reverse().find((r) => r[s.id] !== null && r[s.id] !== undefined)
+          return { series: s, index: i, date: shown[i].date, value: v, change: prev ? v - prev[s.id] : null }
         }
       }
       return null
     }).filter(Boolean)
-  }, [showLatest, visible, data])
+  }, [showLatest, visible, shown])
 
   return (
     <section className="card" aria-label={ariaLabel ?? title}>
@@ -90,6 +100,24 @@ export default function SeriesChart({
 
       {header}
 
+      {fullData && (
+        <div className="flex flex-wrap items-center gap-1.5 border-b border-hairline px-4 py-2 sm:px-5" role="group" aria-label="Chart horizon">
+          <span className="label-xs mr-1">Horizon</span>
+          {HORIZONS.map((h) => (
+            <button
+              key={h.id}
+              type="button"
+              aria-pressed={horizon === h.id}
+              onClick={() => setHorizon(h.id)}
+              title={h.id === 'tab' ? "Follow the tab's date range slider" : `Show the last ${h.label} on this chart only`}
+              className={`chip px-2 py-0.5 text-[11px] ${horizon === h.id ? 'chip-on' : ''}`}
+            >
+              {h.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {showLatest && latest.length > 0 && (
         <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1.5 border-b border-hairline px-4 py-3 sm:px-5" aria-live="polite">
           <span className="label-xs">Latest · {(tooltipDate ?? xFormat)(latest[0].date)}</span>
@@ -111,9 +139,9 @@ export default function SeriesChart({
       <div className={`${height} px-1 py-4 sm:px-2`}>
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
-            data={data}
+            data={shown}
             syncId={syncId}
-            margin={{ top: 12, right: showLatest ? 64 : hasRight ? 4 : 20, bottom: 4, left: 4 }}
+            margin={{ top: 12, right: showLatest ? 80 : hasRight ? 4 : 20, bottom: 4, left: 4 }}
             onClick={(state) => state?.activeLabel && onSelect?.(state.activeLabel)}
           >
             <CartesianGrid stroke={CHROME.grid} vertical={false} />
@@ -165,7 +193,7 @@ export default function SeriesChart({
               <ReferenceLine
                 key={`dec-${d.date}`}
                 yAxisId="left"
-                x={nearestX(data, d.date)}
+                x={nearestX(shown, d.date)}
                 stroke={d.change_bp > 0 ? '#E9B872' : '#7FB9E8'}
                 strokeOpacity={0.3}
                 strokeDasharray="2 3"
@@ -177,7 +205,7 @@ export default function SeriesChart({
               <ReferenceLine
                 key={event.id}
                 yAxisId="left"
-                x={nearestX(data, event.date)}
+                x={nearestX(shown, event.date)}
                 stroke={EVENT_TONE[event.category] ?? '#8A93A6'}
                 strokeOpacity={hoveredEvent?.id === event.id ? 0.85 : 0.28}
                 strokeDasharray="3 3"
@@ -209,7 +237,7 @@ export default function SeriesChart({
 
             {visible.map((s) => (s.type === 'bar' ? (
               <Bar key={s.id} yAxisId={s.axis ?? 'left'} dataKey={s.id} name={s.label} isAnimationActive={false} maxBarSize={10}>
-                {data.map((row) => (
+                {shown.map((row) => (
                   <Cell key={row.date} fill={s.color} fillOpacity={(row[s.id] ?? 0) < 0 ? 0.45 : 0.75} />
                 ))}
               </Bar>
@@ -266,6 +294,23 @@ export default function SeriesChart({
       )}
     </section>
   )
+}
+
+const HORIZONS = [
+  { id: 'tab', label: 'Tab range' },
+  { id: '5y', label: '5Y', years: 5 },
+  { id: '3y', label: '3Y', years: 3 },
+  { id: '1y', label: '1Y', years: 1 },
+  { id: 'ytd', label: 'YTD' },
+]
+
+/** First date of a horizon, relative to the latest row ('YYYY-MM' or 'YYYY-MM-DD'). */
+function horizonStart(rows, id) {
+  const last = rows[rows.length - 1]?.date
+  if (!last) return ''
+  if (id === 'ytd') return `${last.slice(0, 4)}-01`
+  const years = HORIZONS.find((h) => h.id === id)?.years ?? 0
+  return `${parseInt(last.slice(0, 4), 10) - years}${last.slice(4)}`
 }
 
 /** Bold value label drawn only at a line's last point. */

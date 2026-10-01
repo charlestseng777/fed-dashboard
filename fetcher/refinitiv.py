@@ -135,10 +135,10 @@ def _pick(fields: dict) -> float | None:
     return None
 
 
-def _history(token: str, ric: str, start: str) -> dict[str, float]:
+def _history(token: str, ric: str, start: str, count: int = 1000) -> dict[str, float]:
     # No field list: a field the licence doesn't cover fails the whole request.
     # RDP returns only 20 rows unless asked for more.
-    query = urllib.parse.urlencode({"interval": "P1D", "start": start, "count": "1000"})
+    query = urllib.parse.urlencode({"interval": "P1D", "start": start, "count": str(count)})
     url = HISTORY.format(ric=urllib.parse.quote(ric, safe="")) + f"?{query}"
     payload = http.get_json(url, {"Authorization": f"Bearer {token}"})
     block = payload[0] if isinstance(payload, list) and payload else payload
@@ -284,7 +284,17 @@ def _policy_pricing(config_path: Path, meetings: list[str], effr: float | None, 
     except Exception as exc:  # noqa: BLE001
         http.log(f"RDP history failed (snapshot still used): {exc}")
 
+    # Spot gold for the inflation-compensation chart, in the same session.
+    # Popped out of this dict by fetch.py and merged into the daily panel.
+    gold = {}
+    try:
+        gold = _history(token, cfg.get("gold", "XAU="), cfg.get("gold_start", "2018-01-01"), count=4000)
+        http.log(f"RDP gold: {len(gold)} daily closes" + (f", latest {max(gold)}" if gold else ""))
+    except Exception as exc:  # noqa: BLE001
+        http.log(f"RDP gold history failed: {exc}")
+
     return {
+        "gold_history": gold,
         "source": "refinitiv",
         "method": method,
         "as_of": today.isoformat(),

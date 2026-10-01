@@ -76,14 +76,15 @@ export default function App() {
     return weekly.filter((row) => row.date.slice(0, 7) >= from && row.date.slice(0, 7) <= to)
   }, [weekly, m.view])
 
-  const pricedView = useMemo(() => {
+  const pricedFull = useMemo(() => {
     const hist = meta.policy_pricing?.priced_12m_history
     const useFutures = meta.policy_pricing?.source === 'refinitiv' && hist && Object.keys(hist).length
-    return d.view.map((row) => ({
+    return daily.map((row) => ({
       date: row.date,
       priced_12m: useFutures ? hist[row.date] ?? null : row.priced_12m_proxy ?? null,
     }))
-  }, [d.view, meta.policy_pricing])
+  }, [daily, meta.policy_pricing])
+  const pricedView = useMemo(() => pricedFull.slice(d.range[0], d.range[1] + 1), [pricedFull, d.range])
 
   const contractSeries = useMemo(() => (state.positioning?.contracts ?? []).map((c) => ({
     id: `${c.id}_lev`,
@@ -232,6 +233,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 title="Labour market"
                 subtitle="Payroll changes (bars, thousands, right axis) against the unemployment rate. Toggle wages, openings and the V/U ratio on."
                 data={m.view}
+                fullData={monthly}
                 series={LABOUR_SERIES}
                 syncId="macro"
                 xFormat={axisTick}
@@ -246,6 +248,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 title="Weekly jobless claims"
                 subtitle="Initial claims and 4-week average (left), continuing claims (right), thousands. The timeliest labour-market signal."
                 data={claimsView}
+                fullData={weekly}
                 series={[
                   { id: 'icsa', label: 'Initial claims (k)', short: 'Initial', color: PALETTE.blue, width: 1.25, locked: true },
                   { id: 'icsa_4w', label: 'Initial claims, 4wk avg (k)', short: '4wk avg', color: PALETTE.orange, width: 2.25, locked: true },
@@ -264,6 +267,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 title="Activity"
                 subtitle="Retail sales and industrial production (% y/y, left); Philly and Empire State manufacturing surveys (diffusion index, right) as a free stand-in for ISM."
                 data={m.view}
+                fullData={monthly}
                 series={GROWTH_SERIES}
                 syncId="macro"
                 xFormat={axisTick}
@@ -315,6 +319,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                   ? 'Change in the policy rate priced over the Fed funds futures strip, bp. Negative = cuts.'
                   : 'Proxy: 1Y Treasury yield minus EFFR, bp. Negative = cuts priced. Add Refinitiv credentials for the futures-based series.'}
                 data={pricedView}
+                fullData={pricedFull}
                 series={PRICED_SERIES}
                 syncId="rates"
                 xFormat={axisTickDay}
@@ -332,6 +337,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
               title="Policy expectations vs term premium"
               subtitle="The NY Fed's ACM model splits the 10Y yield into the expected path of short rates and a term premium (right axis) — separating 'the Fed will do more/less' from 'investors want more compensation for duration'."
               data={d.view}
+                fullData={daily}
               series={TERM_PREMIUM_SERIES}
               syncId="rates"
               xFormat={axisTickDay}
@@ -347,6 +353,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 title="Curve spreads"
                 subtitle="2s10s and 5s30s, basis points. Bull steepening usually means cuts being priced; bear steepening often means term premium."
                 data={d.view}
+                fullData={daily}
                 series={CURVE_SERIES}
                 syncId="rates"
                 xFormat={axisTickDay}
@@ -359,13 +366,15 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
               />
               <SeriesChart
                 title="Inflation compensation"
-                subtitle="TIPS breakevens and the 10Y real yield, percent. The 5y5y forward is the market's read on long-run inflation expectations."
+                subtitle="TIPS breakevens and the 10Y real yield (percent, left), with spot gold ($/oz, right) as a market-based inflation hedge. The 5y5y forward is the market's read on long-run inflation expectations."
                 data={d.view}
+                fullData={daily}
                 series={BREAKEVEN_SERIES}
                 syncId="rates"
                 xFormat={axisTickDay}
                 tooltipDate={dayLong}
                 leftFormat={pctTick}
+                rightFormat={(v) => `$${v.toLocaleString()}`}
                 valueFormat={(v) => pct(v, 2)}
                 refLines={[{ y: 2, label: '2%' }]}
               />
@@ -406,6 +415,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
               title="Leveraged-fund net positions by contract"
               subtitle="Net contracts (long minus short), weekly. STIR futures (Fed funds, SOFR) show bets on the policy path directly."
               data={p.view}
+                fullData={posWeekly}
               series={contractSeries}
               syncId="positioning"
               xFormat={axisTickDay}
@@ -430,6 +440,7 @@ const SOURCE_LABELS = {
   'nyfed:acm': 'NY Fed ACM term premium',
   'clevelandfed:nowcast': 'Cleveland Fed nowcast',
   'refinitiv:policy_pricing': 'Refinitiv futures / OIS',
+  'refinitiv:gold': 'Refinitiv gold',
   'cftc:tff': 'CFTC positioning',
   'treasury:auctions': 'Treasury auctions',
   'fed:news': 'Fed news feeds',

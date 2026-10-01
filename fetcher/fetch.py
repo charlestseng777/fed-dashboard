@@ -454,6 +454,19 @@ def main() -> int:
     if pricing is None:
         pricing = proxy_pricing(daily, meetings, today)
 
+    # Spot gold (Refinitiv XAU=) rides on the pricing session; merge it into
+    # the daily panel, falling back to the last stored closes if this run
+    # couldn't log in.
+    gold = pricing.pop("gold_history", None) or {}
+    status["refinitiv:gold"] = {"ok": bool(gold)} if gold else {"ok": False, "error": "no fresh gold closes this run"}
+    if not gold:
+        old_daily = load_json(DATA_DIR / "daily.json", {}) or {}
+        gold = {row["date"]: row["gold"] for row in old_daily.get("observations", []) if row.get("gold") is not None}
+    for row in daily:
+        g = gold.get(row["date"])
+        if g is not None:
+            row["gold"] = round(g, 2)
+
     log("CFTC positioning …")
     positioning = attempt("cftc:tff", lambda: flows.cftc_positioning(WEEKLY_START), prev_pos or None)
 
@@ -472,7 +485,7 @@ def main() -> int:
     snap = {}
     for key in ("ust_2y", "ust_5y", "ust_10y", "ust_30y", "s2s10", "s5s30", "acm_tp10", "acm_rn10",
                 "be_5y", "be_10y", "be_5y5y", "real_10y", "sofr", "effr", "ff_upper", "ff_lower",
-                "priced_12m_proxy"):
+                "priced_12m_proxy", "gold"):
         val, when = latest_value(daily, key)
         snap[key] = {"value": val, "date": when,
                      "chg_1w": r(val - v1, 3) if val is not None and (v1 := value_ago(daily, key, 7)) is not None else None,
