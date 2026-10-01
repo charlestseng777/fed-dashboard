@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T12:36:48+00:00",
+ "generated_at": "2026-10-01T12:38:29+00:00",
  "latest_month": "2026-08",
  "latest_daily": "2026-09-30",
  "snapshot": {
@@ -106,10 +106,10 @@
    "chg_1m": 18.0
   },
   "gold": {
-   "value": null,
-   "date": null,
-   "chg_1w": null,
-   "chg_1m": null
+   "value": 4186.7,
+   "date": "2026-09-30",
+   "chg_1w": -131.7,
+   "chg_1m": -294.8
   }
  },
  "fomc": {
@@ -616,7 +616,7 @@
   },
   "fred:ICSA": {
    "ok": true,
-   "last": "2026-09-26"
+   "last": "2026-09-19"
   },
   "fred:CCSA": {
    "ok": true,
@@ -700,12 +700,11 @@
    "error": "no credentials configured"
   },
   "yahoo:gold": {
-   "ok": false,
-   "error": "GET https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF failed: HTTP 429: Too Many Requests"
+   "ok": true
   },
   "gold_source": {
    "ok": true,
-   "source": "previous"
+   "source": "yahoo"
   },
   "cftc:tff": {
    "ok": true
