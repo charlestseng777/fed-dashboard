@@ -86,7 +86,7 @@ export const BREAKEVEN_SERIES = [
   { id: 'be_5y5y', label: '5y5y forward breakeven', short: '5y5y', color: P.orange, width: 2, locked: true },
   { id: 'be_10y', label: '10Y breakeven', short: '10Y BE', color: P.aqua, width: 1.5, on: true },
   { id: 'real_10y', label: '10Y real yield (TIPS)', short: '10Y real', color: P.yellow, width: 1.5 },
-  { id: 'gold', label: 'Gold, COMEX front month ($/oz)', short: 'Gold', color: P.magenta, width: 1.5, axis: 'right', on: true,
+  { id: 'gold', label: 'Gold ($/oz)', short: 'Gold', color: P.magenta, width: 1.5, axis: 'right', on: true,
     format: (v) => `$${v.toLocaleString(undefined, { maximumFractionDigits: 0 })}` },
 ]
 

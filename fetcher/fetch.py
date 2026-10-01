@@ -460,9 +460,14 @@ def main() -> int:
     refinitiv_gold = pricing.pop("gold_history", None) or {}
     log("Gold (Yahoo Finance) …")
     gold = attempt("yahoo:gold", lambda: markets.yahoo_daily_closes("GC=F", DAILY_START), {})
-    status["gold_source"] = {"ok": True, "source": "yahoo" if gold else ("refinitiv" if refinitiv_gold else "previous")}
+    source = "yahoo"
+    if not gold and refinitiv_gold:
+        gold, source = refinitiv_gold, "refinitiv"
     if not gold:
-        gold = refinitiv_gold
+        log("Gold (Stooq spot XAU/USD) …")
+        gold = attempt("stooq:gold", lambda: markets.stooq_daily_closes("xauusd", DAILY_START), {})
+        source = "stooq"
+    status["gold_source"] = {"ok": bool(gold), "source": source if gold else "previous"}
     if not gold:
         old_daily = load_json(DATA_DIR / "daily.json", {}) or {}
         gold = {row["date"]: row["gold"] for row in old_daily.get("observations", []) if row.get("gold") is not None}

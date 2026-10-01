@@ -366,7 +366,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
               />
               <SeriesChart
                 title="Inflation compensation"
-                subtitle="TIPS breakevens and the 10Y real yield (percent, left), with gold ($/oz, right; COMEX front-month futures via Yahoo Finance) as a market-based inflation hedge. The 5y5y forward is the market's read on long-run inflation expectations."
+                subtitle="TIPS breakevens and the 10Y real yield (percent, left), with gold ($/oz, right; COMEX front-month futures via Yahoo Finance, or spot XAU/USD if Yahoo is unavailable) as a market-based inflation hedge. The 5y5y forward is the market's read on long-run inflation expectations."
                 data={d.view}
                 fullData={daily}
                 series={BREAKEVEN_SERIES}
@@ -441,6 +441,7 @@ const SOURCE_LABELS = {
   'clevelandfed:nowcast': 'Cleveland Fed nowcast',
   'refinitiv:policy_pricing': 'Refinitiv futures / OIS',
   'yahoo:gold': 'Gold (Yahoo Finance)',
+  'stooq:gold': 'Gold (Stooq fallback)',
   'cftc:tff': 'CFTC positioning',
   'treasury:auctions': 'Treasury auctions',
   'fed:news': 'Fed news feeds',
