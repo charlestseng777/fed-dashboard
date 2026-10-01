@@ -463,6 +463,20 @@ def main() -> int:
     if pricing is None:
         pricing = proxy_pricing(daily, meetings, today)
 
+    # 1Y / 2Y SOFR OIS history from the same Refinitiv session; keep the last
+    # stored values for any date (or the whole series) this run didn't get.
+    ois_hist = pricing.pop("ois_history", None) or {}
+    status["refinitiv:ois_history"] = ({"ok": True} if any(ois_hist.values())
+                                       else {"ok": False, "error": "no fresh OIS history this run"})
+    old_rows = {row["date"]: row for row in (load_json(DATA_DIR / "daily.json", {}) or {}).get("observations", [])}
+    for row in daily:
+        for key in ("ois_1y", "ois_2y"):
+            v = (ois_hist.get(key) or {}).get(row["date"])
+            if v is None:
+                v = old_rows.get(row["date"], {}).get(key)
+            if v is not None:
+                row[key] = round(v, 3)
+
     # Gold: Yahoo Finance COMEX front-month futures (no login needed), then
     # Refinitiv spot XAU= from the pricing session, then the last stored
     # closes. Merged into the daily panel.
@@ -503,7 +517,7 @@ def main() -> int:
     snap = {}
     for key in ("ust_2y", "ust_5y", "ust_10y", "ust_30y", "s2s10", "s5s30", "acm_tp10", "acm_rn10",
                 "be_5y", "be_10y", "be_5y5y", "real_10y", "sofr", "effr", "ff_upper", "ff_lower",
-                "priced_12m_proxy", "gold", "fwd_1y1y", "be_2y"):
+                "priced_12m_proxy", "gold", "fwd_1y1y", "be_2y", "ois_1y", "ois_2y"):
         val, when = latest_value(daily, key)
         snap[key] = {"value": val, "date": when,
                      "chg_1w": r(val - v1, 3) if val is not None and (v1 := value_ago(daily, key, 7)) is not None else None,

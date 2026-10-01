@@ -366,7 +366,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
               />
               <SeriesChart
                 title="Near-term policy and inflation expectations"
-                subtitle="The 1y1y Treasury forward (the 1-year rate one year ahead: where the market sees policy settling after the next year) and 2Y breakeven inflation, percent. From the Fed Board's fitted Treasury and TIPS curves, refreshed roughly weekly."
+                subtitle="The 1y1y Treasury forward (the 1-year rate one year ahead: where the market sees policy settling after the next year) and 2Y breakeven inflation, percent, from the Fed Board's fitted Treasury and TIPS curves (refreshed roughly weekly). Switch on 1Y / 2Y SOFR OIS (Refinitiv) or Fed funds to compare."
                 data={d.view}
                 fullData={daily}
                 series={NEAR_TERM_SERIES}
@@ -457,6 +457,7 @@ const SOURCE_LABELS = {
   'clevelandfed:nowcast': 'Cleveland Fed nowcast',
   'refinitiv:policy_pricing': 'Refinitiv futures / OIS',
   'fedboard:gsw': 'Fed Board fitted curves (1y1y, 2Y BE)',
+  'refinitiv:ois_history': 'Refinitiv SOFR OIS history',
   'yahoo:gold': 'Gold (Yahoo Finance)',
   'stooq:gold': 'Gold (Stooq fallback)',
   'cftc:tff': 'CFTC positioning',

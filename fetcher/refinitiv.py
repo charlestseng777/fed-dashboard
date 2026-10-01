@@ -295,7 +295,21 @@ def _policy_pricing(config_path: Path, meetings: list[str], effr: float | None, 
     except Exception as exc:  # noqa: BLE001
         http.log(f"RDP gold history failed: {exc}")
 
+    # Daily history of the 1Y and 2Y SOFR OIS points for the near-term
+    # expectations chart (popped out and merged into the daily panel too).
+    ois_history: dict[str, dict[str, float]] = {}
+    for key, tenor in (("ois_1y", "1Y"), ("ois_2y", "2Y")):
+        ric = ois.get(tenor)
+        if not ric:
+            continue
+        try:
+            ois_history[key] = _history(token, ric, cfg.get("ois_history_start", "2018-05-01"), count=4000)
+            http.log(f"RDP {ric}: {len(ois_history[key])} daily closes")
+        except Exception as exc:  # noqa: BLE001
+            http.log(f"RDP {ric} history failed: {exc}")
+
     return {
+        "ois_history": ois_history,
         "gold_history": gold,
         "source": "refinitiv",
         "method": method,

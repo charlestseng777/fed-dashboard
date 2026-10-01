@@ -95,6 +95,9 @@ export const BREAKEVEN_SERIES = [
 export const NEAR_TERM_SERIES = [
   { id: 'fwd_1y1y', label: '1y1y Treasury forward', short: '1y1y fwd', color: P.blue, width: 2, locked: true },
   { id: 'be_2y', label: '2Y breakeven inflation', short: '2Y BE', color: P.orange, width: 2, locked: true },
+  // Off by default: switch on from the chips. Refinitiv SOFR OIS history.
+  { id: 'ois_1y', label: '1Y SOFR OIS', short: '1Y OIS', color: P.aqua, width: 1.5 },
+  { id: 'ois_2y', label: '2Y SOFR OIS', short: '2Y OIS', color: P.yellow, width: 1.5 },
   { id: 'ff_upper', label: 'Fed funds (upper)', short: 'Fed funds', color: P.neutral, width: 1.5, step: true },
 ]
 

@@ -33,6 +33,7 @@ export function CurveSnapshot({ snapshot }) {
     ['s2s10', '2s10s', 'spread'], ['s5s30', '5s30s', 'spread'],
     ['acm_tp10', 'ACM 10Y term premium', 'yield'], ['acm_rn10', 'ACM 10Y expected path', 'yield'],
     ['fwd_1y1y', '1y1y Treasury forward', 'yield'], ['be_2y', '2Y breakeven', 'yield'],
+    ['ois_1y', '1Y SOFR OIS', 'yield'], ['ois_2y', '2Y SOFR OIS', 'yield'],
     ['be_5y', '5Y breakeven', 'yield'], ['be_5y5y', '5y5y breakeven', 'yield'], ['real_10y', '10Y real (TIPS)', 'yield'],
     ['sofr', 'SOFR', 'yield'], ['effr', 'EFFR', 'yield'],
   ]

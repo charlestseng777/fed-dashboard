@@ -120,12 +120,15 @@ export default function SeriesChart({
 
       {showLatest && latest.length > 0 && (
         <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1.5 border-b border-hairline px-4 py-3 sm:px-5" aria-live="polite">
-          <span className="label-xs">Latest · {(tooltipDate ?? xFormat)(latest[0].date)}</span>
+          <span className="label-xs">Latest · {(tooltipDate ?? xFormat)(latest.reduce((a, l) => (l.date > a ? l.date : a), latest[0].date))}</span>
           {latest.map((l) => (
             <span key={l.series.id} className="flex items-baseline gap-2">
               <span className="h-2 w-2 shrink-0 self-center rounded-sm" style={{ backgroundColor: l.series.color }} aria-hidden="true" />
               <span className="text-xs text-muted">{l.series.short}</span>
               <span className="num text-lg font-bold text-ink">{(l.series.format ?? fmt)(l.value)}</span>
+              {l.date !== latest.reduce((a, x) => (x.date > a ? x.date : a), latest[0].date) && (
+                <span className="num text-[10px] text-faint">({(tooltipDate ?? xFormat)(l.date)})</span>
+              )}
               {l.change !== null && (
                 <span className={`num text-[11px] ${l.change > 0 ? 'text-[#E9B872]' : l.change < 0 ? 'text-[#7FB9E8]' : 'text-faint'}`}>
                   {(l.series.format ?? fmt)(l.change)} on the week
