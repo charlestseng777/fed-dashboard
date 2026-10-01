@@ -17,9 +17,11 @@ different chains.
 
 from __future__ import annotations
 
+import base64
 import calendar
 import json
 import os
+import time
 import urllib.parse
 from datetime import date, timedelta
 from pathlib import Path
@@ -43,7 +45,7 @@ def configured() -> bool:
     )
 
 
-def _token() -> str:
+def _login() -> dict:
     env = os.environ
     if env.get("REFINITIV_CLIENT_ID") and env.get("REFINITIV_CLIENT_SECRET"):
         payload = http.post_form(TOKEN_V2, {
@@ -65,10 +67,48 @@ def _token() -> str:
             # and the fetcher keeps the previous day's pricing.
             "takeExclusiveSignOnControl": "false",
         })
-    token = payload.get("access_token")
-    if not token:
+    if not payload.get("access_token"):
         raise RuntimeError("RDP token response had no access_token")
-    return token
+    return payload
+
+
+_SESSION: dict = {}
+
+
+def _token(attempts: int = 3, wait_s: int = 90) -> str:
+    """Log in, retrying while the account's single session is held by
+    something else — usually the sibling dashboard's nightly run, which
+    starts within minutes of this one and signs out when it's done."""
+    for attempt in range(attempts):
+        try:
+            payload = _login()
+            _SESSION.clear()
+            _SESSION.update(payload)
+            return payload["access_token"]
+        except RuntimeError as exc:
+            if "quota" not in str(exc).lower() or attempt == attempts - 1:
+                raise
+            http.log(f"RDP session busy; retrying in {wait_s}s ({attempt + 1}/{attempts - 1})")
+            time.sleep(wait_s)
+    raise RuntimeError("unreachable")
+
+
+def release() -> None:
+    """Sign out: revoke the refresh token so the session is freed now rather
+    than when it expires. Best-effort — failure only means the session lapses
+    on its own later."""
+    token = _SESSION.get("refresh_token") or _SESSION.get("access_token")
+    client = os.environ.get("REFINITIV_APP_KEY") or os.environ.get("REFINITIV_CLIENT_ID")
+    _SESSION.clear()
+    if not token or not client:
+        return
+    basic = base64.b64encode(f"{client}:".encode()).decode()
+    try:
+        http.post_form(f"{BASE}/auth/oauth2/v1/revoke", {"token": token},
+                       {"Authorization": f"Basic {basic}"})
+        http.log("RDP session released")
+    except Exception as exc:  # noqa: BLE001
+        http.log(f"RDP sign-out failed (session will expire on its own): {exc}")
 
 
 def _snapshot(token: str, rics: list[str]) -> dict[str, float]:
@@ -187,6 +227,14 @@ def meeting_path(futures: dict[tuple[int, int], float], meetings: list[str], cur
 
 def policy_pricing(config_path: Path, meetings: list[str], effr: float | None, today: date,
                    history_start: str) -> dict:
+    try:
+        return _policy_pricing(config_path, meetings, effr, today, history_start)
+    finally:
+        release()
+
+
+def _policy_pricing(config_path: Path, meetings: list[str], effr: float | None, today: date,
+                    history_start: str) -> dict:
     cfg = json.loads(config_path.read_text())
     token = _token()
 
