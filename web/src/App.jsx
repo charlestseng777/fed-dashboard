@@ -355,6 +355,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 valueFormat={(v) => bp(v, 1)}
                 refLines={[{ y: 0, solid: true, color: '#4A5468' }]}
                 decisions={decisions}
+                showLatest
               />
               <SeriesChart
                 title="Inflation compensation"

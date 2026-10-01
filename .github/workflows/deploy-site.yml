@@ -1,0 +1,39 @@
+name: Deploy site
+
+# Rebuild and publish the dashboard when the page code changes, without
+# running the data fetch (and so without logging in to Refinitiv). Data
+# refreshes still deploy through update-data.yml.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+  workflow_dispatch:
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build the dashboard
+        run: |
+          npm --prefix web ci
+          npm --prefix web run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/dist

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import {
-  Bar, CartesianGrid, Cell, ComposedChart, Label, Line, ReferenceArea, ReferenceLine,
+  Bar, CartesianGrid, Cell, ComposedChart, Label, LabelList, Line, ReferenceArea, ReferenceLine,
   ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts'
 import { CHROME } from '../lib/series.js'
@@ -23,7 +23,7 @@ const EVENT_TONE = {
 export default function SeriesChart({
   title, subtitle, data, series, syncId, xFormat, tooltipDate, leftFormat, rightFormat,
   valueFormat, refLines = [], events = [], decisions = [], onSelect, selected,
-  height = 'h-[300px] sm:h-[340px]', header, children, footer, ariaLabel,
+  height = 'h-[300px] sm:h-[340px]', header, children, footer, ariaLabel, showLatest = false,
 }) {
   const [enabled, setEnabled] = useState(() => series.filter((s) => s.locked || s.on).map((s) => s.id))
   const [hoveredEvent, setHoveredEvent] = useState(null)
@@ -38,6 +38,23 @@ export default function SeriesChart({
   const shownDecisions = decisions.filter((d) => d.date >= from && d.date <= to)
 
   const fmt = valueFormat ?? ((v) => v.toFixed(2))
+
+  // Latest value of each visible line, for the bold readout and the
+  // end-of-line labels (showLatest), so today's level needs no hovering.
+  const latest = useMemo(() => {
+    if (!showLatest) return []
+    return visible.map((s) => {
+      for (let i = data.length - 1; i >= 0; i -= 1) {
+        const v = data[i][s.id]
+        if (v !== null && v !== undefined) {
+          // Change over ~5 observations (a trading week on daily data).
+          const prev = data.slice(0, Math.max(0, i - 4)).reverse().find((r) => r[s.id] !== null && r[s.id] !== undefined)
+          return { series: s, index: i, date: data[i].date, value: v, change: prev ? v - prev[s.id] : null }
+        }
+      }
+      return null
+    }).filter(Boolean)
+  }, [showLatest, visible, data])
 
   return (
     <section className="card" aria-label={ariaLabel ?? title}>
@@ -73,12 +90,30 @@ export default function SeriesChart({
 
       {header}
 
+      {showLatest && latest.length > 0 && (
+        <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1.5 border-b border-hairline px-4 py-3 sm:px-5" aria-live="polite">
+          <span className="label-xs">Latest · {(tooltipDate ?? xFormat)(latest[0].date)}</span>
+          {latest.map((l) => (
+            <span key={l.series.id} className="flex items-baseline gap-2">
+              <span className="h-2 w-2 shrink-0 self-center rounded-sm" style={{ backgroundColor: l.series.color }} aria-hidden="true" />
+              <span className="text-xs text-muted">{l.series.short}</span>
+              <span className="num text-lg font-bold text-ink">{(l.series.format ?? fmt)(l.value)}</span>
+              {l.change !== null && (
+                <span className={`num text-[11px] ${l.change > 0 ? 'text-[#E9B872]' : l.change < 0 ? 'text-[#7FB9E8]' : 'text-faint'}`}>
+                  {(l.series.format ?? fmt)(l.change)} on the week
+                </span>
+              )}
+            </span>
+          ))}
+        </div>
+      )}
+
       <div className={`${height} px-1 py-4 sm:px-2`}>
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
             data={data}
             syncId={syncId}
-            margin={{ top: 12, right: hasRight ? 4 : 20, bottom: 4, left: 4 }}
+            margin={{ top: 12, right: showLatest ? 64 : hasRight ? 4 : 20, bottom: 4, left: 4 }}
             onClick={(state) => state?.activeLabel && onSelect?.(state.activeLabel)}
           >
             <CartesianGrid stroke={CHROME.grid} vertical={false} />
@@ -192,7 +227,14 @@ export default function SeriesChart({
                 activeDot={{ r: 4, strokeWidth: 2, stroke: CHROME.surface }}
                 connectNulls
                 isAnimationActive={false}
-              />
+              >
+                {showLatest && (
+                  <LabelList
+                    dataKey={s.id}
+                    content={endLabel(s, latest.find((l) => l.series.id === s.id)?.index, s.format ?? fmt)}
+                  />
+                )}
+              </Line>
             )))}
           </ComposedChart>
         </ResponsiveContainer>
@@ -224,6 +266,18 @@ export default function SeriesChart({
       )}
     </section>
   )
+}
+
+/** Bold value label drawn only at a line's last point. */
+function endLabel(series, lastIndex, format) {
+  return function EndLabel({ x, y, index, value }) {
+    if (index !== lastIndex || x === undefined || y === undefined || value === null || value === undefined) return null
+    return (
+      <text x={x + 8} y={y} dy={4} fill={series.color} fontSize={12} fontWeight={700} style={{ pointerEvents: 'none' }}>
+        {format(value)}
+      </text>
+    )
+  }
 }
 
 /**
