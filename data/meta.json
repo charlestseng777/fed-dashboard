@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-10-01T01:35:53+00:00",
+ "generated_at": "2026-10-01T12:36:48+00:00",
  "latest_month": "2026-08",
- "latest_daily": "2026-09-29",
+ "latest_daily": "2026-09-30",
  "snapshot": {
   "ust_2y": {
    "value": 4.89,
@@ -52,22 +52,22 @@
    "chg_1m": 0.31
   },
   "be_5y": {
-   "value": 2.34,
-   "date": "2026-09-29",
+   "value": 2.36,
+   "date": "2026-09-30",
    "chg_1w": 0.02,
-   "chg_1m": 0.04
+   "chg_1m": 0.05
   },
   "be_10y": {
-   "value": 2.35,
-   "date": "2026-09-29",
-   "chg_1w": 0.02,
-   "chg_1m": 0.04
+   "value": 2.36,
+   "date": "2026-09-30",
+   "chg_1w": 0.01,
+   "chg_1m": 0.05
   },
   "be_5y5y": {
    "value": 2.36,
-   "date": "2026-09-29",
-   "chg_1w": 0.02,
-   "chg_1m": 0.04
+   "date": "2026-09-30",
+   "chg_1w": 0.0,
+   "chg_1m": 0.05
   },
   "real_10y": {
    "value": 2.91,
@@ -76,10 +76,10 @@
    "chg_1m": 0.49
   },
   "sofr": {
-   "value": 3.88,
-   "date": "2026-09-29",
-   "chg_1w": 0.01,
-   "chg_1m": 0.23
+   "value": 3.9,
+   "date": "2026-09-30",
+   "chg_1w": 0.03,
+   "chg_1m": 0.22
   },
   "effr": {
    "value": 3.88,
@@ -89,13 +89,13 @@
   },
   "ff_upper": {
    "value": 4.0,
-   "date": "2026-09-29",
+   "date": "2026-09-30",
    "chg_1w": 0.0,
    "chg_1m": 0.25
   },
   "ff_lower": {
    "value": 3.75,
-   "date": "2026-09-29",
+   "date": "2026-09-30",
    "chg_1w": 0.0,
    "chg_1m": 0.25
   },
@@ -104,6 +104,12 @@
    "date": "2026-09-29",
    "chg_1w": 15.0,
    "chg_1m": 18.0
+  },
+  "gold": {
+   "value": null,
+   "date": null,
+   "chg_1w": null,
+   "chg_1m": null
   }
  },
  "fomc": {
@@ -610,11 +616,11 @@
   },
   "fred:ICSA": {
    "ok": true,
-   "last": "2026-09-19"
+   "last": "2026-09-26"
   },
   "fred:CCSA": {
    "ok": true,
-   "last": "2026-09-12"
+   "last": "2026-09-19"
   },
   "fred:DGS3MO": {
    "ok": true,
@@ -662,7 +668,7 @@
   },
   "fred:SOFR": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:EFFR": {
    "ok": true,
@@ -670,11 +676,11 @@
   },
   "fred:DFEDTARU": {
    "ok": true,
-   "last": "2026-09-30"
+   "last": "2026-10-01"
   },
   "fred:DFEDTARL": {
    "ok": true,
-   "last": "2026-09-30"
+   "last": "2026-10-01"
   },
   "fred:THREEFYTP10": {
    "ok": true,
@@ -691,7 +697,15 @@
   },
   "refinitiv:policy_pricing": {
    "ok": false,
-   "error": "POST https://api.refinitiv.com/auth/oauth2/v1/token -> 400: {\"error\":\"access_denied\"  ,\"error_description\":\"Session quota is reached.\" } "
+   "error": "no credentials configured"
+  },
+  "yahoo:gold": {
+   "ok": false,
+   "error": "GET https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF failed: HTTP 429: Too Many Requests"
+  },
+  "gold_source": {
+   "ok": true,
+   "source": "previous"
   },
   "cftc:tff": {
    "ok": true
