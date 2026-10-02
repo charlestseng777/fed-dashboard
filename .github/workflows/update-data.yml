@@ -73,7 +73,9 @@ jobs:
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           # Manual runs can untick "refinitiv" to refresh without logging in.
-          REFINITIV_DISABLED: ${{ inputs.refinitiv == false && 'true' || 'false' }}
+          # Scheduled runs have no inputs, and GitHub treats a missing input as
+          # equal to false, so the skip must apply to manual runs only.
+          REFINITIV_DISABLED: ${{ github.event_name == 'workflow_dispatch' && inputs.refinitiv == false && 'true' || 'false' }}
           REFINITIV_CLIENT_ID: ${{ secrets.REFINITIV_CLIENT_ID }}
           REFINITIV_CLIENT_SECRET: ${{ secrets.REFINITIV_CLIENT_SECRET }}
           REFINITIV_USERNAME: ${{ secrets.REFINITIV_USERNAME }}
