@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T20:05:30+00:00",
+ "generated_at": "2026-10-02T01:49:30+00:00",
  "as_of": "2026-09-22",
  "contracts": [{"id": "ff", "label": "30-day Fed funds", "group": "stir", "dv01": 41.67}, {"id": "sr3", "label": "3M SOFR", "group": "stir", "dv01": 25.0}, {"id": "tu", "label": "2Y T-note", "group": "ust", "dv01": 38.0}, {"id": "fv", "label": "5Y T-note", "group": "ust", "dv01": 45.0}, {"id": "ty", "label": "10Y T-note", "group": "ust", "dv01": 62.0}, {"id": "tn", "label": "Ultra 10Y", "group": "ust", "dv01": 90.0}, {"id": "us", "label": "T-bond", "group": "ust", "dv01": 130.0}, {"id": "ub", "label": "Ultra T-bond", "group": "ust", "dv01": 220.0}],
  "weekly": [

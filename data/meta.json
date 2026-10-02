@@ -1,42 +1,42 @@
 {
- "generated_at": "2026-10-01T20:05:30+00:00",
+ "generated_at": "2026-10-02T01:49:30+00:00",
  "latest_month": "2026-08",
  "latest_daily": "2026-09-30",
  "snapshot": {
   "ust_2y": {
-   "value": 4.89,
-   "date": "2026-09-29",
-   "chg_1w": 0.18,
-   "chg_1m": 0.55
+   "value": 4.88,
+   "date": "2026-09-30",
+   "chg_1w": 0.03,
+   "chg_1m": 0.54
   },
   "ust_5y": {
-   "value": 5.06,
-   "date": "2026-09-29",
-   "chg_1w": 0.23,
-   "chg_1m": 0.58
+   "value": 5.09,
+   "date": "2026-09-30",
+   "chg_1w": 0.1,
+   "chg_1m": 0.6
   },
   "ust_10y": {
-   "value": 5.26,
-   "date": "2026-09-29",
-   "chg_1w": 0.3,
-   "chg_1m": 0.53
+   "value": 5.29,
+   "date": "2026-09-30",
+   "chg_1w": 0.18,
+   "chg_1m": 0.54
   },
   "ust_30y": {
-   "value": 5.59,
-   "date": "2026-09-29",
-   "chg_1w": 0.3,
-   "chg_1m": 0.37
+   "value": 5.64,
+   "date": "2026-09-30",
+   "chg_1w": 0.24,
+   "chg_1m": 0.39
   },
   "s2s10": {
-   "value": 37.0,
-   "date": "2026-09-29",
-   "chg_1w": 12.0,
-   "chg_1m": -2.0
+   "value": 41.0,
+   "date": "2026-09-30",
+   "chg_1w": 15.0,
+   "chg_1m": 0.0
   },
   "s5s30": {
-   "value": 53.0,
-   "date": "2026-09-29",
-   "chg_1w": 7.0,
+   "value": 55.0,
+   "date": "2026-09-30",
+   "chg_1w": 14.0,
    "chg_1m": -21.0
   },
   "acm_tp10": {
@@ -70,9 +70,9 @@
    "chg_1m": 0.05
   },
   "real_10y": {
-   "value": 2.91,
-   "date": "2026-09-29",
-   "chg_1w": 0.28,
+   "value": 2.93,
+   "date": "2026-09-30",
+   "chg_1w": 0.17,
    "chg_1m": 0.49
   },
   "sofr": {
@@ -100,10 +100,10 @@
    "chg_1m": 0.25
   },
   "priced_12m_proxy": {
-   "value": 70.0,
-   "date": "2026-09-29",
-   "chg_1w": 15.0,
-   "chg_1m": 18.0
+   "value": 66.0,
+   "date": "2026-09-30",
+   "chg_1w": 5.0,
+   "chg_1m": 13.0
   },
   "gold": {
    "value": 4186.7,
@@ -122,6 +122,18 @@
    "date": "2026-09-25",
    "chg_1w": 0.02,
    "chg_1m": 0.175
+  },
+  "ois_1y": {
+   "value": null,
+   "date": null,
+   "chg_1w": null,
+   "chg_1m": null
+  },
+  "ois_2y": {
+   "value": null,
+   "date": null,
+   "chg_1w": null,
+   "chg_1m": null
   }
  },
  "fomc": {
@@ -538,7 +550,7 @@
   "upcoming": [{"date": "2026-10-06", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": null, "btc": null, "dealer_pct": null, "indirect_pct": null, "direct_pct": null}, {"date": "2026-10-07", "term": "9-Year 10-Month", "type": "Note", "reopening": true, "size_bn": 39.0, "high_yield": null, "btc": null, "dealer_pct": null, "indirect_pct": null, "direct_pct": null}, {"date": "2026-10-08", "term": "29-Year 10-Month", "type": "Bond", "reopening": true, "size_bn": 22.0, "high_yield": null, "btc": null, "dealer_pct": null, "indirect_pct": null, "direct_pct": null}]
  },
  "fed_news": [{"kind": "speeches", "title": "Bowman, Modernizing Financial Regulation: Initial Observations from eSLR", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Jefferson, The U.S. Economy and Monetary Policy", "url": "https://www.federalreserve.gov/newsevents/speech/jefferson20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Waller, The Data Version of Godzilla versus Kong: FRED Takes on AI", "url": "https://www.federalreserve.gov/newsevents/speech/waller20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Cook, The Dual Mandate in Rural America", "url": "https://www.federalreserve.gov/newsevents/speech/cook20260930a.htm", "date": "2026-09-30"}, {"kind": "speeches", "title": "Waller, Payments in the Age of AI Agents", "url": "https://www.federalreserve.gov/newsevents/speech/waller20260928a.htm", "date": "2026-09-29"}, {"kind": "speeches", "title": "Barr, Economic Conditions and Monetary Policy", "url": "https://www.federalreserve.gov/newsevents/speech/barr20260929a.htm", "date": "2026-09-29"}, {"kind": "speeches", "title": "Bowman, Opening Remarks", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20260929a.htm", "date": "2026-09-29"}, {"kind": "speeches", "title": "Cook, An Update on AI and the Economy", "url": "https://www.federalreserve.gov/newsevents/speech/cook20260928a.htm", "date": "2026-09-28"}, {"kind": "speeches", "title": "Barr, A Long-Term View on the Costs of Shelter", "url": "https://www.federalreserve.gov/newsevents/speech/barr20260923a.htm", "date": "2026-09-23"}, {"kind": "speeches", "title": "Jefferson, Discount Window Modernization and Treasury Market Functioning", "url": "https://www.federalreserve.gov/newsevents/speech/jefferson20260922a.htm", "date": "2026-09-22"}, {"kind": "speeches", "title": "Bowman, The Final Chapter on Modernizing Bank Regulatory Stress Testing", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20260918a.htm", "date": "2026-09-18"}, {"kind": "speeches", "title": "Bowman, Initial Findings from Independent Review of Silicon Valley Bank", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20260918b.htm", "date": "2026-09-18"}],
- "upcoming_releases": [{"id": "claims", "label": "Initial jobless claims", "date": "2026-10-01", "source": "DoL"}, {"id": "cot", "label": "CFTC positioning (COT)", "date": "2026-10-02", "source": "CFTC"}, {"id": "fomc", "label": "FOMC decision", "date": "2026-10-28", "source": "Federal Reserve"}, {"id": "PCE inflation", "label": "PCE inflation", "date": "2026-10-29", "source": "BEA"}],
+ "upcoming_releases": [{"id": "cot", "label": "CFTC positioning (COT)", "date": "2026-10-02", "source": "CFTC"}, {"id": "claims", "label": "Initial jobless claims", "date": "2026-10-08", "source": "DoL"}, {"id": "fomc", "label": "FOMC decision", "date": "2026-10-28", "source": "Federal Reserve"}, {"id": "PCE inflation", "label": "PCE inflation", "date": "2026-10-29", "source": "BEA"}],
  "notes": [],
  "events": [{"id": "covid", "date": "2020-03", "category": "shock", "label": "COVID-19 shock", "description": "Emergency cuts take the target range to 0–0.25% and the Fed restarts large-scale asset purchases."}, {"id": "fait", "date": "2020-08", "category": "policy", "label": "Flexible average inflation targeting", "description": "Revised framework: the Fed aims for inflation moderately above 2% for some time after periods of undershooting."}, {"id": "liftoff", "date": "2022-03", "category": "policy", "label": "Hiking cycle begins", "description": "First rate rise since 2018, as inflation runs well above target."}, {"id": "svb", "date": "2023-03", "category": "shock", "label": "Regional bank stress", "description": "Silicon Valley Bank fails; the Fed sets up the Bank Term Funding Program."}, {"id": "peak", "date": "2023-07", "category": "policy", "label": "Final hike of the cycle", "description": "Target range reaches 5.25–5.50%, where it stays for over a year."}, {"id": "first-cut", "date": "2024-09", "category": "policy", "label": "Easing begins", "description": "A 50bp cut starts the easing cycle."}, {"id": "tariffs", "date": "2025-04", "category": "shock", "label": "Tariff shock", "description": "Broad US tariff increases announced, raising the near-term inflation outlook and growth risks."}],
  "sources": {
@@ -636,47 +648,47 @@
   },
   "fred:DGS3MO": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DGS6MO": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DGS1": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DGS2": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DGS5": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DGS10": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DGS30": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:DFII10": {
    "ok": true,
-   "last": "2026-09-29"
+   "last": "2026-09-30"
   },
   "fred:T5YIE": {
    "ok": true,
-   "last": "2026-09-30"
+   "last": "2026-10-01"
   },
   "fred:T10YIE": {
    "ok": true,
-   "last": "2026-09-30"
+   "last": "2026-10-01"
   },
   "fred:T5YIFR": {
    "ok": true,
-   "last": "2026-09-30"
+   "last": "2026-10-01"
   },
   "fred:SOFR": {
    "ok": true,
@@ -713,6 +725,10 @@
   "refinitiv:policy_pricing": {
    "ok": false,
    "error": "no credentials configured"
+  },
+  "refinitiv:ois_history": {
+   "ok": false,
+   "error": "no fresh OIS history this run"
   },
   "yahoo:gold": {
    "ok": true
