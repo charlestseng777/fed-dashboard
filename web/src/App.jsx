@@ -236,7 +236,7 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
                 fullData={monthly}
                 series={LABOUR_SERIES}
                 syncId="macro"
-                xFormat={axisTick}
+                xFormat={monthShort}
                 tooltipDate={monthLong}
                 leftFormat={(v) => `${v}`}
                 rightFormat={(v) => `${v}k`}
