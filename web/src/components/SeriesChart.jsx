@@ -235,6 +235,11 @@ export default function SeriesChart({
             <Tooltip
               cursor={{ stroke: '#4A5468', strokeWidth: 1, strokeDasharray: '3 3' }}
               isAnimationActive={false}
+              // Keep the popup just below the cursor all the way down, so it
+              // tracks the mouse vertically instead of flipping up over the
+              // lines when the cursor reaches the lower half of the plot.
+              allowEscapeViewBox={{ x: false, y: true }}
+              wrapperStyle={{ zIndex: 20 }}
               content={<SeriesTooltip series={visible} fmt={fmt} dateFormat={tooltipDate ?? xFormat} />}
             />
 
