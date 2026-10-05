@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import {
   Bar, CartesianGrid, Cell, ComposedChart, Label, LabelList, Line, ReferenceArea, ReferenceLine,
   ResponsiveContainer, Tooltip, XAxis, YAxis,
@@ -28,6 +28,10 @@ export default function SeriesChart({
 }) {
   const [enabled, setEnabled] = useState(() => series.filter((s) => s.locked || s.on).map((s) => s.id))
   const [hoveredEvent, setHoveredEvent] = useState(null)
+  // The hover popup sits in the top corner opposite the cursor, so it never
+  // covers the point being read: cursor on the right half -> popup top-left.
+  const plotRef = useRef(null)
+  const [tipSide, setTipSide] = useState('right')
   // Per-chart horizon. 'tab' follows the tab's shared date slider (`data`);
   // the others zoom this chart alone over its full history (`fullData`).
   const [horizon, setHorizon] = useState('tab')
@@ -139,13 +143,19 @@ export default function SeriesChart({
         </div>
       )}
 
-      <div className={`${height} px-1 py-4 sm:px-2`}>
+      <div ref={plotRef} className={`${height} px-1 py-4 sm:px-2`}>
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
             data={shown}
             syncId={syncId}
             margin={{ top: 12, right: showLatest ? 80 : hasRight ? 4 : 20, bottom: 4, left: 4 }}
             onClick={(state) => state?.activeLabel && onSelect?.(state.activeLabel)}
+            onMouseMove={(state) => {
+              const w = plotRef.current?.clientWidth
+              if (!w || typeof state?.chartX !== 'number') return
+              const side = state.chartX > w / 2 ? 'left' : 'right'
+              if (side !== tipSide) setTipSide(side)
+            }}
           >
             <CartesianGrid stroke={CHROME.grid} vertical={false} />
             <XAxis
@@ -235,6 +245,12 @@ export default function SeriesChart({
             <Tooltip
               cursor={{ stroke: '#4A5468', strokeWidth: 1, strokeDasharray: '3 3' }}
               isAnimationActive={false}
+              position={{
+                x: tipSide === 'left' ? 56 : Math.max(56, (plotRef.current?.clientWidth ?? 400) - TOOLTIP_WIDTH - (hasRight ? 64 : 28)),
+                y: 6,
+              }}
+              allowEscapeViewBox={{ x: false, y: false }}
+              wrapperStyle={{ zIndex: 5, pointerEvents: 'none' }}
               content={<SeriesTooltip series={visible} fmt={fmt} dateFormat={tooltipDate ?? xFormat} />}
             />
 
@@ -340,21 +356,26 @@ function nearestX(data, key) {
   return data.find((row) => row.date >= key)?.date ?? key
 }
 
+const TOOLTIP_WIDTH = 196
+
 function SeriesTooltip({ active, payload, label, series, fmt, dateFormat }) {
   if (!active || !payload?.length) return null
   const row = payload[0]?.payload
   if (!row) return null
   return (
-    <div className="pointer-events-none w-[260px] rounded-lg border border-hairline bg-[#10131A]/95 p-3 shadow-2xl backdrop-blur">
-      <div className="num text-xs font-semibold text-ink">{dateFormat ? dateFormat(label) : label}</div>
-      <div className="mt-2.5 space-y-1.5">
+    <div
+      className="pointer-events-none rounded-md border border-hairline bg-[#10131A]/80 px-2 py-1.5 shadow-lg backdrop-blur-sm"
+      style={{ width: TOOLTIP_WIDTH }}
+    >
+      <div className="num text-[11px] font-semibold text-ink">{dateFormat ? dateFormat(label) : label}</div>
+      <div className="mt-1 space-y-0.5">
         {series.map((s) => {
           const v = row[s.id]
           if (v === null || v === undefined) return null
           return (
-            <div key={s.id} className="flex items-center gap-2 text-xs">
-              <span className="h-2 w-2 shrink-0 rounded-sm" style={{ backgroundColor: s.color }} aria-hidden="true" />
-              <span className="flex-1 truncate text-muted">{s.label}</span>
+            <div key={s.id} className="flex items-center gap-1.5 text-[11px] leading-tight">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-sm" style={{ backgroundColor: s.color }} aria-hidden="true" />
+              <span className="flex-1 truncate text-muted">{s.short ?? s.label}</span>
               <span className="num text-right font-medium text-ink">{(s.format ?? fmt)(v)}</span>
             </div>
           )
