@@ -45,10 +45,15 @@
   }
 }
 
-/* Recharts overrides: keep the grid and axes quiet so the data carries the page. */
+/* Recharts overrides: quiet grid, but white axis labels so they read at a glance. */
 .recharts-cartesian-axis-tick text {
-  fill: #5a6273;
+  fill: #ffffff;
   font-size: 11px;
+}
+
+/* Date labels under the range-slider brush, to match. */
+.recharts-brush-texts text {
+  fill: #ffffff;
 }
 
 .recharts-brush .recharts-brush-slide {
