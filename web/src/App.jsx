@@ -189,7 +189,19 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
       </header>
 
       <div className="space-y-4">
-        <StatCards cards={CARDS[tab]} />
+        <div>
+          <StatCards cards={CARDS[tab]} />
+          {tab === 'macro' && (
+            <p className="mt-2.5 text-xs leading-relaxed text-muted">
+              <span className="font-medium text-ink">Note:</span> CPI is based mainly on a fixed basket of goods and
+              services purchased by households, while PCE uses business sales data and allows expenditure weights to
+              adjust as consumers substitute between goods. PCE also has broader coverage, including items like
+              employer-paid healthcare. Because it better reflects changes in consumer behaviour and overall
+              consumption, the Federal Reserve targets PCE inflation. However, markets often react more to CPI because
+              it&rsquo;s released earlier and provides the first major read on inflation each month.
+            </p>
+          )}
+        </div>
 
         {tab === 'macro' && (
           <>
