@@ -5,7 +5,7 @@ import {
   BREAKEVEN_SERIES, CONTRACT_COLORS, CURVE_SERIES, NEAR_TERM_SERIES, GROWTH_SERIES, INFLATION_SERIES, LABOUR_SERIES,
   PALETTE, POSITIONING_SERIES, PRICED_SERIES, TERM_PREMIUM_SERIES, YIELD_SERIES,
 } from './lib/series.js'
-import { lastWith, pricedPath } from './lib/fedwatch.js'
+import { lastWith } from './lib/fedwatch.js'
 import SeriesChart from './components/SeriesChart.jsx'
 import RangeSlider, { startIndexFor } from './components/RangeSlider.jsx'
 import {
@@ -119,10 +119,8 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
 
   const latestM = lastWith(monthly, 'core_pce') ?? monthly[monthly.length - 1]
   const snap = meta.snapshot ?? {}
-  const priced = pricedPath(meta, daily)
   const agg = state.positioning?.aggregate ?? {}
   const lastAuction = meta.auctions?.recent?.[0]
-  const nextMeeting = meta.fomc?.next
   const decisions = meta.fomc?.decisions ?? []
   const events = meta.events ?? []
 
@@ -131,10 +129,10 @@ python fetcher/fetch.py{'\n'}npm --prefix web run dev
 
   const CARDS = {
     macro: [
-      { id: 'core_pce', label: 'Core PCE', color: PALETTE.blue, value: lastWith(monthly, 'core_pce')?.core_pce, unit: '% y/y', change: change('core_pce'), changeFormat: (v) => pp(v), changeLabel: 'on the month', note: `The Fed's target measure · ${monthLong(lastWith(monthly, 'core_pce')?.date)}` },
+      { id: 'headline_cpi', label: 'Headline CPI', color: PALETTE.green, value: lastWith(monthly, 'headline_cpi')?.headline_cpi, unit: '% y/y', change: change('headline_cpi'), changeFormat: (v) => pp(v), changeLabel: 'on the month', note: `BLS, all items · ${monthLong(lastWith(monthly, 'headline_cpi')?.date)}` },
       { id: 'core_cpi', label: 'Core CPI', color: PALETTE.aqua, value: lastWith(monthly, 'core_cpi')?.core_cpi, unit: '% y/y', change: change('core_cpi'), changeFormat: (v) => pp(v), changeLabel: 'on the month', note: `3m annualised ${pct(lastWith(monthly, 'core_cpi_3m')?.core_cpi_3m)} · ${monthLong(lastWith(monthly, 'core_cpi')?.date)}` },
-      { id: 'unemployment', label: 'Unemployment', color: PALETTE.orange, value: lastWith(monthly, 'unemployment')?.unemployment, digits: 1, unit: '%', change: change('unemployment'), changeFormat: (v) => pp(v, 1), changeLabel: 'on the month', note: `Payrolls ${lastWith(monthly, 'payrolls')?.payrolls ?? '—'}k · ${monthLong(lastWith(monthly, 'unemployment')?.date)}` },
-      { id: 'ff', label: 'Fed funds target', color: PALETTE.neutral, value: snap.ff_upper?.value, unit: `% (${snap.ff_lower?.value?.toFixed(2) ?? '—'}–${snap.ff_upper?.value?.toFixed(2) ?? '—'})`, change: priced.twelveMonthBp, changeFormat: (v) => bp(v), changeLabel: 'priced over 12m', note: nextMeeting ? `Next FOMC ${dayLong(nextMeeting.date)}${nextMeeting.sep ? ' (SEP)' : ''}` : 'Upper bound of the target range' },
+      { id: 'headline_pce', label: 'Headline PCE', color: PALETTE.red, value: lastWith(monthly, 'headline_pce')?.headline_pce, unit: '% y/y', change: change('headline_pce'), changeFormat: (v) => pp(v), changeLabel: 'on the month', note: `BEA, all items · ${monthLong(lastWith(monthly, 'headline_pce')?.date)}` },
+      { id: 'core_pce', label: 'Core PCE', color: PALETTE.blue, value: lastWith(monthly, 'core_pce')?.core_pce, unit: '% y/y', change: change('core_pce'), changeFormat: (v) => pp(v), changeLabel: 'on the month', note: `The Fed's target measure · 3m annualised ${pct(lastWith(monthly, 'core_pce_3m')?.core_pce_3m)} · ${monthLong(lastWith(monthly, 'core_pce')?.date)}` },
     ],
     rates: [
       { id: 'ust_2y', label: '2Y Treasury', color: PALETTE.blue, value: snap.ust_2y?.value, unit: '%', change: snapBp('ust_2y'), changeFormat: (v) => bp(v, 1), changeLabel: 'on the week', note: 'Most sensitive to the policy path' },
