@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T01:55:46+00:00",
+ "generated_at": "2026-10-13T03:11:50+00:00",
  "latest_month": "2026-08",
  "latest_daily": "2026-10-08",
  "snapshot": {
@@ -259,13 +259,12 @@
  "policy_pricing": {
   "source": "refinitiv",
   "method": "historical",
-  "as_of": "2026-10-10",
+  "as_of": "2026-10-13",
   "reference_rate": 3.88,
-  "meetings": [{"date": "2026-10-28", "implied_rate": 3.925, "change_bp": 4.5, "cumulative_bp": 4.5}, {"date": "2026-12-09", "implied_rate": 4.129, "change_bp": 20.4, "cumulative_bp": 24.9}, {"date": "2027-01-27", "implied_rate": 4.23, "change_bp": 10.1, "cumulative_bp": 35.0}, {"date": "2027-03-17", "implied_rate": 4.407, "change_bp": 17.7, "cumulative_bp": 52.7}, {"date": "2027-04-28", "implied_rate": 4.5, "change_bp": 9.3, "cumulative_bp": 62.0}, {"date": "2027-06-09", "implied_rate": 4.607, "change_bp": 10.7, "cumulative_bp": 72.7}, {"date": "2027-07-28", "implied_rate": 4.645, "change_bp": 3.8, "cumulative_bp": 76.5}, {"date": "2027-09-15", "implied_rate": 4.685, "change_bp": 4.0, "cumulative_bp": 80.5}, {"date": "2027-10-27", "implied_rate": 4.685, "change_bp": -0.0, "cumulative_bp": 80.5}],
-  "futures_strip": [{"month": "2026-10", "ric": "FFc1", "price": 96.115, "implied_rate": 3.885}, {"month": "2026-11", "ric": "FFc2", "price": 96.075, "implied_rate": 3.925}, {"month": "2026-12", "ric": "FFc3", "price": 95.93, "implied_rate": 4.07}, {"month": "2027-01", "ric": "FFc4", "price": 95.86, "implied_rate": 4.14}, {"month": "2027-02", "ric": "FFc5", "price": 95.77, "implied_rate": 4.23}, {"month": "2027-03", "ric": "FFc6", "price": 95.69, "implied_rate": 4.31}, {"month": "2027-04", "ric": "FFc7", "price": 95.59, "implied_rate": 4.41}, {"month": "2027-05", "ric": "FFc8", "price": 95.5, "implied_rate": 4.5}, {"month": "2027-06", "ric": "FFc9", "price": 95.425, "implied_rate": 4.575}, {"month": "2027-07", "ric": "FFc10", "price": 95.39, "implied_rate": 4.61}, {"month": "2027-08", "ric": "FFc11", "price": 95.355, "implied_rate": 4.645}, {"month": "2027-09", "ric": "FFc12", "price": 95.335, "implied_rate": 4.665}, {"month": "2027-10", "ric": "FFc13", "price": 95.315, "implied_rate": 4.685}],
-  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.926}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.038}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.192}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.479}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.658}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.709}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.736}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.847}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.938}],
+  "meetings": [{"date": "2026-10-28", "implied_rate": 3.93, "change_bp": 5.0, "cumulative_bp": 5.0}, {"date": "2026-12-09", "implied_rate": 4.141, "change_bp": 21.1, "cumulative_bp": 26.1}, {"date": "2027-01-27", "implied_rate": 4.25, "change_bp": 10.9, "cumulative_bp": 37.0}, {"date": "2027-03-17", "implied_rate": 4.427, "change_bp": 17.7, "cumulative_bp": 54.7}, {"date": "2027-04-28", "implied_rate": 4.53, "change_bp": 10.3, "cumulative_bp": 65.0}, {"date": "2027-06-09", "implied_rate": 4.637, "change_bp": 10.7, "cumulative_bp": 75.7}, {"date": "2027-07-28", "implied_rate": 4.68, "change_bp": 4.3, "cumulative_bp": 80.0}, {"date": "2027-09-15", "implied_rate": 4.72, "change_bp": 4.0, "cumulative_bp": 84.0}, {"date": "2027-10-27", "implied_rate": 4.72, "change_bp": 0.0, "cumulative_bp": 84.0}],
+  "futures_strip": [{"month": "2026-10", "ric": "FFc1", "price": 96.1175, "implied_rate": 3.882}, {"month": "2026-11", "ric": "FFc2", "price": 96.07, "implied_rate": 3.93}, {"month": "2026-12", "ric": "FFc3", "price": 95.92, "implied_rate": 4.08}, {"month": "2027-01", "ric": "FFc4", "price": 95.845, "implied_rate": 4.155}, {"month": "2027-02", "ric": "FFc5", "price": 95.75, "implied_rate": 4.25}, {"month": "2027-03", "ric": "FFc6", "price": 95.67, "implied_rate": 4.33}, {"month": "2027-04", "ric": "FFc7", "price": 95.565, "implied_rate": 4.435}, {"month": "2027-05", "ric": "FFc8", "price": 95.47, "implied_rate": 4.53}, {"month": "2027-06", "ric": "FFc9", "price": 95.395, "implied_rate": 4.605}, {"month": "2027-07", "ric": "FFc10", "price": 95.355, "implied_rate": 4.645}, {"month": "2027-08", "ric": "FFc11", "price": 95.32, "implied_rate": 4.68}, {"month": "2027-09", "ric": "FFc12", "price": 95.3, "implied_rate": 4.7}, {"month": "2027-10", "ric": "FFc13", "price": 95.28, "implied_rate": 4.72}],
+  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.926}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.039}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.193}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.479}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.656}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.707}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.732}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.843}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.935}],
   "priced_12m_history": {
-   "2025-09-05": -124.3,
    "2025-09-08": -126.0,
    "2025-09-09": -119.0,
    "2025-09-10": -121.0,
@@ -541,7 +540,8 @@
    "2026-10-06": 80.5,
    "2026-10-07": 75.5,
    "2026-10-08": 76.0,
-   "2026-10-09": 80.0
+   "2026-10-09": 80.0,
+   "2026-10-12": 83.8
   }
  },
  "auctions": {
@@ -699,11 +699,11 @@
   },
   "fred:DFEDTARU": {
    "ok": true,
-   "last": "2026-10-09"
+   "last": "2026-10-12"
   },
   "fred:DFEDTARL": {
    "ok": true,
-   "last": "2026-10-09"
+   "last": "2026-10-12"
   },
   "fred:THREEFYTP10": {
    "ok": true,
