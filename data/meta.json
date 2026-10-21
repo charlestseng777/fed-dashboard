@@ -1,139 +1,139 @@
 {
- "generated_at": "2026-10-20T01:17:50+00:00",
+ "generated_at": "2026-10-21T00:59:46+00:00",
  "latest_month": "2026-09",
- "latest_daily": "2026-10-16",
+ "latest_daily": "2026-10-19",
  "snapshot": {
   "ust_2y": {
-   "value": 4.74,
-   "date": "2026-10-16",
-   "chg_1w": -0.06,
-   "chg_1m": 0.0
+   "value": 4.77,
+   "date": "2026-10-19",
+   "chg_1w": -0.03,
+   "chg_1m": 0.01
   },
   "ust_5y": {
-   "value": 4.89,
-   "date": "2026-10-16",
-   "chg_1w": -0.13,
-   "chg_1m": 0.03
+   "value": 4.94,
+   "date": "2026-10-19",
+   "chg_1w": -0.08,
+   "chg_1m": 0.08
   },
   "ust_10y": {
-   "value": 5.09,
-   "date": "2026-10-16",
-   "chg_1w": -0.15,
-   "chg_1m": 0.08
+   "value": 5.15,
+   "date": "2026-10-19",
+   "chg_1w": -0.09,
+   "chg_1m": 0.14
   },
   "ust_30y": {
-   "value": 5.43,
-   "date": "2026-10-16",
-   "chg_1w": -0.17,
-   "chg_1m": 0.08
+   "value": 5.48,
+   "date": "2026-10-19",
+   "chg_1w": -0.12,
+   "chg_1m": 0.14
   },
   "s2s10": {
-   "value": 35.0,
-   "date": "2026-10-16",
-   "chg_1w": -9.0,
-   "chg_1m": 8.0
+   "value": 38.0,
+   "date": "2026-10-19",
+   "chg_1w": -6.0,
+   "chg_1m": 13.0
   },
   "s5s30": {
    "value": 54.0,
-   "date": "2026-10-16",
+   "date": "2026-10-19",
    "chg_1w": -4.0,
-   "chg_1m": 5.0
+   "chg_1m": 6.0
   },
   "acm_tp10": {
-   "value": 0.756,
-   "date": "2026-10-16",
-   "chg_1w": -0.146,
-   "chg_1m": 0.09
+   "value": 0.8,
+   "date": "2026-10-19",
+   "chg_1w": -0.102,
+   "chg_1m": 0.168
   },
   "acm_rn10": {
-   "value": 4.311,
-   "date": "2026-10-16",
-   "chg_1w": -0.015,
-   "chg_1m": -0.008
+   "value": 4.324,
+   "date": "2026-10-19",
+   "chg_1w": -0.002,
+   "chg_1m": -0.015
   },
   "be_5y": {
-   "value": 2.37,
-   "date": "2026-10-16",
-   "chg_1w": 0.03,
-   "chg_1m": 0.02
+   "value": 2.38,
+   "date": "2026-10-19",
+   "chg_1w": 0.04,
+   "chg_1m": 0.07
   },
   "be_10y": {
    "value": 2.35,
-   "date": "2026-10-16",
+   "date": "2026-10-19",
    "chg_1w": 0.02,
    "chg_1m": 0.02
   },
   "be_5y5y": {
-   "value": 2.33,
-   "date": "2026-10-16",
-   "chg_1w": 0.01,
-   "chg_1m": 0.02
+   "value": 2.32,
+   "date": "2026-10-19",
+   "chg_1w": 0.0,
+   "chg_1m": -0.03
   },
   "real_10y": {
-   "value": 2.74,
-   "date": "2026-10-16",
-   "chg_1w": -0.17,
-   "chg_1m": 0.06
+   "value": 2.8,
+   "date": "2026-10-19",
+   "chg_1w": -0.11,
+   "chg_1m": 0.12
   },
   "sofr": {
-   "value": 3.88,
-   "date": "2026-10-16",
-   "chg_1w": 0.01,
-   "chg_1m": 0.26
+   "value": 3.87,
+   "date": "2026-10-19",
+   "chg_1w": 0.0,
+   "chg_1m": 0.02
   },
   "effr": {
    "value": 3.88,
-   "date": "2026-10-16",
+   "date": "2026-10-19",
    "chg_1w": 0.0,
-   "chg_1m": 0.25
+   "chg_1m": 0.0
   },
   "ff_upper": {
    "value": 4.0,
-   "date": "2026-10-16",
+   "date": "2026-10-19",
    "chg_1w": 0.0,
-   "chg_1m": 0.25
+   "chg_1m": 0.0
   },
   "ff_lower": {
    "value": 3.75,
-   "date": "2026-10-16",
+   "date": "2026-10-19",
    "chg_1w": 0.0,
-   "chg_1m": 0.25
+   "chg_1m": 0.0
   },
   "priced_12m_proxy": {
-   "value": 58.0,
-   "date": "2026-10-16",
-   "chg_1w": -1.0,
-   "chg_1m": -24.0
+   "value": 62.0,
+   "date": "2026-10-19",
+   "chg_1w": 3.0,
+   "chg_1m": 6.0
   },
   "gold": {
-   "value": 4181.1,
-   "date": "2026-10-16",
-   "chg_1w": -35.2,
-   "chg_1m": -206.4
+   "value": 4160.1,
+   "date": "2026-10-19",
+   "chg_1w": -56.2,
+   "chg_1m": -264.8
   },
   "fwd_1y1y": {
-   "value": 5.089,
-   "date": "2026-10-09",
-   "chg_1w": -0.064,
-   "chg_1m": 0.435
+   "value": 4.954,
+   "date": "2026-10-16",
+   "chg_1w": -0.135,
+   "chg_1m": -0.055
   },
   "be_2y": {
-   "value": 2.315,
-   "date": "2026-10-09",
-   "chg_1w": -0.006,
-   "chg_1m": -0.011
+   "value": 2.354,
+   "date": "2026-10-16",
+   "chg_1w": 0.039,
+   "chg_1m": 0.069
   },
   "ois_1y": {
-   "value": 4.456,
-   "date": "2026-10-16",
-   "chg_1w": -0.023,
-   "chg_1m": -0.025
+   "value": 4.504,
+   "date": "2026-10-19",
+   "chg_1w": 0.025,
+   "chg_1m": 0.007
   },
   "ois_2y": {
-   "value": 4.577,
-   "date": "2026-10-16",
-   "chg_1w": -0.081,
-   "chg_1m": -0.04
+   "value": 4.631,
+   "date": "2026-10-19",
+   "chg_1w": -0.027,
+   "chg_1m": -0.005
   }
  },
  "fomc": {
@@ -200,11 +200,11 @@
  "nowcasts": {
   "cleveland": {
    "monthly": [{"period": "October 2026", "values": {"CPI Inflation": 0.27, "Core CPI Inflation": 0.21, "PCE Inflation": 0.28, "Core PCE Inflation": 0.25}}],
-   "quarterly": [{"period": "2026 Q4", "values": {"CPI Inflation": 5.03, "Core CPI Inflation": 3.02, "PCE Inflation": 4.27, "Core PCE Inflation": 3.15}}]
+   "quarterly": [{"period": "2026 Q4", "values": {"CPI Inflation": 4.98, "Core CPI Inflation": 3.02, "PCE Inflation": 4.24, "Core PCE Inflation": 3.15}}]
   },
   "gdpnow": {
    "quarter": "2026-Q3",
-   "value": 3.64
+   "value": 3.5
   }
  },
  "quarterly": [
@@ -254,18 +254,17 @@
   {"quarter":"2025-Q4","gdp_growth":0.2,"gdpnow":4.24,"eci":3.41},
   {"quarter":"2026-Q1","gdp_growth":2.5,"gdpnow":1.24,"eci":3.43},
   {"quarter":"2026-Q2","gdp_growth":2.2,"gdpnow":1.54,"eci":3.38},
-  {"quarter":"2026-Q3","gdp_growth":null,"gdpnow":3.64,"eci":null}
+  {"quarter":"2026-Q3","gdp_growth":null,"gdpnow":3.5,"eci":null}
  ],
  "policy_pricing": {
   "source": "refinitiv",
   "method": "historical",
-  "as_of": "2026-10-20",
+  "as_of": "2026-10-21",
   "reference_rate": 3.88,
-  "meetings": [{"date": "2026-10-28", "implied_rate": 3.925, "change_bp": 4.5, "cumulative_bp": 4.5}, {"date": "2026-12-09", "implied_rate": 4.143, "change_bp": 21.8, "cumulative_bp": 26.3}, {"date": "2027-01-27", "implied_rate": 4.255, "change_bp": 11.2, "cumulative_bp": 37.5}, {"date": "2027-03-17", "implied_rate": 4.432, "change_bp": 17.7, "cumulative_bp": 55.2}, {"date": "2027-04-28", "implied_rate": 4.515, "change_bp": 8.3, "cumulative_bp": 63.5}, {"date": "2027-06-09", "implied_rate": 4.608, "change_bp": 9.3, "cumulative_bp": 72.8}, {"date": "2027-07-28", "implied_rate": 4.63, "change_bp": 2.2, "cumulative_bp": 75.0}, {"date": "2027-09-15", "implied_rate": 4.66, "change_bp": 3.0, "cumulative_bp": 78.0}, {"date": "2027-10-27", "implied_rate": 4.621, "change_bp": -3.9, "cumulative_bp": 74.1}],
-  "futures_strip": [{"month": "2026-10", "ric": "FFc1", "price": 96.1175, "implied_rate": 3.882}, {"month": "2026-11", "ric": "FFc2", "price": 96.075, "implied_rate": 3.925}, {"month": "2026-12", "ric": "FFc3", "price": 95.92, "implied_rate": 4.08}, {"month": "2027-01", "ric": "FFc4", "price": 95.845, "implied_rate": 4.155}, {"month": "2027-02", "ric": "FFc5", "price": 95.745, "implied_rate": 4.255}, {"month": "2027-03", "ric": "FFc6", "price": 95.665, "implied_rate": 4.335}, {"month": "2027-04", "ric": "FFc7", "price": 95.565, "implied_rate": 4.435}, {"month": "2027-05", "ric": "FFc8", "price": 95.485, "implied_rate": 4.515}, {"month": "2027-06", "ric": "FFc9", "price": 95.42, "implied_rate": 4.58}, {"month": "2027-07", "ric": "FFc10", "price": 95.39, "implied_rate": 4.61}, {"month": "2027-08", "ric": "FFc11", "price": 95.37, "implied_rate": 4.63}, {"month": "2027-09", "ric": "FFc12", "price": 95.355, "implied_rate": 4.645}, {"month": "2027-10", "ric": "FFc13", "price": 95.345, "implied_rate": 4.655}],
-  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.933}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.063}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.229}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.504}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.631}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.653}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.657}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.75}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.84}],
+  "meetings": [{"date": "2026-10-28", "implied_rate": 3.92, "change_bp": 4.0, "cumulative_bp": 4.0}, {"date": "2026-12-09", "implied_rate": 4.138, "change_bp": 21.8, "cumulative_bp": 25.8}, {"date": "2027-01-27", "implied_rate": 4.255, "change_bp": 11.7, "cumulative_bp": 37.5}, {"date": "2027-03-17", "implied_rate": 4.432, "change_bp": 17.7, "cumulative_bp": 55.2}, {"date": "2027-04-28", "implied_rate": 4.52, "change_bp": 8.8, "cumulative_bp": 64.0}, {"date": "2027-06-09", "implied_rate": 4.62, "change_bp": 10.0, "cumulative_bp": 74.0}, {"date": "2027-07-28", "implied_rate": 4.65, "change_bp": 3.0, "cumulative_bp": 77.0}, {"date": "2027-09-15", "implied_rate": 4.69, "change_bp": 4.0, "cumulative_bp": 81.0}, {"date": "2027-10-27", "implied_rate": 4.613, "change_bp": -7.7, "cumulative_bp": 73.3}],
+  "futures_strip": [{"month": "2026-10", "ric": "FFc1", "price": 96.115, "implied_rate": 3.885}, {"month": "2026-11", "ric": "FFc2", "price": 96.08, "implied_rate": 3.92}, {"month": "2026-12", "ric": "FFc3", "price": 95.925, "implied_rate": 4.075}, {"month": "2027-01", "ric": "FFc4", "price": 95.845, "implied_rate": 4.155}, {"month": "2027-02", "ric": "FFc5", "price": 95.745, "implied_rate": 4.255}, {"month": "2027-03", "ric": "FFc6", "price": 95.665, "implied_rate": 4.335}, {"month": "2027-04", "ric": "FFc7", "price": 95.565, "implied_rate": 4.435}, {"month": "2027-05", "ric": "FFc8", "price": 95.48, "implied_rate": 4.52}, {"month": "2027-06", "ric": "FFc9", "price": 95.41, "implied_rate": 4.59}, {"month": "2027-07", "ric": "FFc10", "price": 95.375, "implied_rate": 4.625}, {"month": "2027-08", "ric": "FFc11", "price": 95.35, "implied_rate": 4.65}, {"month": "2027-09", "ric": "FFc12", "price": 95.33, "implied_rate": 4.67}, {"month": "2027-10", "ric": "FFc13", "price": 95.32, "implied_rate": 4.68}],
+  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.935}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.063}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.228}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.507}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.644}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.663}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.653}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.727}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.796}],
   "priced_12m_history": {
-   "2025-09-15": -119.8,
    "2025-09-16": -123.0,
    "2025-09-17": -119.2,
    "2025-09-18": -118.0,
@@ -541,7 +540,8 @@
    "2026-10-14": 81.0,
    "2026-10-15": 75.2,
    "2026-10-16": 73.5,
-   "2026-10-19": 77.3
+   "2026-10-19": 77.3,
+   "2026-10-20": 79.5
   }
  },
  "auctions": {
@@ -647,67 +647,67 @@
   },
   "fred:DGS3MO": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DGS6MO": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DGS1": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DGS2": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DGS5": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DGS10": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DGS30": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DFII10": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:T5YIE": {
    "ok": true,
-   "last": "2026-10-19"
+   "last": "2026-10-20"
   },
   "fred:T10YIE": {
    "ok": true,
-   "last": "2026-10-19"
+   "last": "2026-10-20"
   },
   "fred:T5YIFR": {
    "ok": true,
-   "last": "2026-10-19"
+   "last": "2026-10-20"
   },
   "fred:SOFR": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:EFFR": {
    "ok": true,
-   "last": "2026-10-16"
+   "last": "2026-10-19"
   },
   "fred:DFEDTARU": {
    "ok": true,
-   "last": "2026-10-19"
+   "last": "2026-10-20"
   },
   "fred:DFEDTARL": {
    "ok": true,
-   "last": "2026-10-19"
+   "last": "2026-10-20"
   },
   "fred:THREEFYTP10": {
    "ok": true,
-   "last": "2026-10-09"
+   "last": "2026-10-16"
   },
   "nyfed:acm": {
    "ok": true
