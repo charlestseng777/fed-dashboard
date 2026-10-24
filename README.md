@@ -50,13 +50,17 @@ endpoint is used.
 
 ## How it runs
 
-`.github/workflows/update-data.yml` runs once each weekday at 23:45 UK time,
-after that day's US data, FOMC and market closes. Cron is UTC, so there are two
-slots (22:45 and 23:45 UTC) and a gate step lets through only the one that
-lands at 23:45 UK time in the current season. Each run:
+`.github/workflows/update-data.yml` runs once each weekday at 05:30 UK time,
+before the London open and after the previous US session's data, FOMC and
+market closes. Cron is UTC, so there are two slots (04:30 and 05:30 UTC) and a
+gate step lets through only the one that lands at 05:30 UK time in the current
+season. Monday's run picks up Friday's close. Each run:
 
 1. `python fetcher/fetch.py` pulls every source. Each source is independent: one
    that fails keeps its previous values and is flagged in the page footer.
+   FRED posts each day's Treasury yields and breakevens only the next US
+   afternoon, so the latest day comes from the US Treasury's own daily curves
+   (published the same evening) until FRED catches up.
 2. If anything changed, it commits `data/*.json`.
 3. It builds `web/` and publishes it to the `gh-pages` branch.
 

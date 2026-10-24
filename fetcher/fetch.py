@@ -33,7 +33,7 @@ DATA_DIR = ROOT / "data"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from fetcher import fed, flows, fred, markets, net as http, refinitiv  # noqa: E402
+from fetcher import fed, flows, fred, markets, net as http, refinitiv, treasury  # noqa: E402
 
 log = http.log
 
@@ -406,6 +406,13 @@ def main() -> int:
     raw_q = fred.many(FRED_QUARTERLY, MONTHLY_START, status)
     raw_w = fred.many(FRED_WEEKLY, WEEKLY_START, status)
     raw_d = fred.many(FRED_DAILY, DAILY_START, status)
+
+    log("Treasury daily curves (closes FRED's next-day lag) …")
+    curves = attempt("treasury:curves", lambda: treasury.latest_curves(date.today()), {})
+    if curves:
+        added = treasury.fill_gap(raw_d, curves)
+        if added:
+            log(f"Treasury added {', '.join(added)} ahead of FRED")
 
     if not raw_d.get("ust_10y") or not raw_m.get("core_cpi_idx"):
         log("Core FRED series missing — refusing to overwrite data with a partial set.")

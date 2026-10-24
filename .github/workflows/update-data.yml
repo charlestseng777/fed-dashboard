@@ -2,12 +2,13 @@ name: Update data
 
 on:
   schedule:
-    # Once a night at 23:45 UK time, Mon–Fri. Cron is UTC and doesn't follow
-    # daylight saving, so there is a slot for each: 22:45 UTC is 23:45 in
-    # summer (BST), 23:45 UTC is 23:45 in winter (GMT). The gate job below
-    # lets only the one that lands at 23:45 UK time through.
-    - cron: '45 22 * * 1-5'
-    - cron: '45 23 * * 1-5'
+    # Once each weekday at 05:30 UK time, before the London open. Cron is UTC
+    # and ignores daylight saving, so there is a slot for each season: 04:30
+    # UTC is 05:30 in summer (BST), 05:30 UTC is 05:30 in winter (GMT). The
+    # gate job below lets only the one that lands at 05:30 UK time through.
+    # Monday's run picks up Friday's close.
+    - cron: '30 4 * * 1-5'
+    - cron: '30 5 * * 1-5'
   workflow_dispatch:
     inputs:
       force:
@@ -33,9 +34,9 @@ jobs:
       run: ${{ steps.check.outputs.run }}
     steps:
       - id: check
-        # Each night both UTC slots fire; only the one that is 23:45 UK time
-        # in the current season goes ahead: 22:45 UTC while the UK is on BST
-        # (+0100), 23:45 UTC while it is on GMT (+0000). Decided by which cron
+        # Each morning both UTC slots fire; only the one that is 05:30 UK time
+        # in the current season goes ahead: 04:30 UTC while the UK is on BST
+        # (+0100), 05:30 UTC while it is on GMT (+0000). Decided by which cron
         # triggered the run, not the clock, because GitHub can start
         # scheduled runs hours late. Manual runs always go ahead.
         run: |
@@ -45,11 +46,11 @@ jobs:
           offset=$(TZ=Europe/London date +%z)
           slot="${{ github.event.schedule }}"
           echo "UK offset ${offset}, triggered by '${slot}'"
-          if { [ "$offset" = "+0100" ] && [ "$slot" = "45 22 * * 1-5" ]; } || \
-             { [ "$offset" = "+0000" ] && [ "$slot" = "45 23 * * 1-5" ]; }; then
+          if { [ "$offset" = "+0100" ] && [ "$slot" = "30 4 * * 1-5" ]; } || \
+             { [ "$offset" = "+0000" ] && [ "$slot" = "30 5 * * 1-5" ]; }; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Not this season's 23:45 UK slot; skipping."
+            echo "Not this season's 05:30 UK slot; skipping."
             echo "run=false" >> "$GITHUB_OUTPUT"
           fi
 
