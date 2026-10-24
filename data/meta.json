@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-10-24T01:08:40+00:00",
+ "generated_at": "2026-10-24T20:26:22+00:00",
  "latest_month": "2026-09",
- "latest_daily": "2026-10-22",
+ "latest_daily": "2026-10-23",
  "snapshot": {
   "ust_2y": {
-   "value": 4.65,
-   "date": "2026-10-22",
-   "chg_1w": -0.12,
-   "chg_1m": -0.06
+   "value": 4.69,
+   "date": "2026-10-23",
+   "chg_1w": -0.05,
+   "chg_1m": -0.16
   },
   "ust_5y": {
-   "value": 4.78,
-   "date": "2026-10-22",
-   "chg_1w": -0.13,
-   "chg_1m": -0.05
+   "value": 4.82,
+   "date": "2026-10-23",
+   "chg_1w": -0.07,
+   "chg_1m": -0.17
   },
   "ust_10y": {
-   "value": 4.96,
-   "date": "2026-10-22",
-   "chg_1w": -0.14,
-   "chg_1m": 0.0
+   "value": 5.0,
+   "date": "2026-10-23",
+   "chg_1w": -0.09,
+   "chg_1m": -0.11
   },
   "ust_30y": {
-   "value": 5.29,
-   "date": "2026-10-22",
-   "chg_1w": -0.14,
-   "chg_1m": 0.0
+   "value": 5.33,
+   "date": "2026-10-23",
+   "chg_1w": -0.1,
+   "chg_1m": -0.07
   },
   "s2s10": {
    "value": 31.0,
-   "date": "2026-10-22",
-   "chg_1w": -2.0,
-   "chg_1m": 6.0
+   "date": "2026-10-23",
+   "chg_1w": -4.0,
+   "chg_1m": 5.0
   },
   "s5s30": {
    "value": 51.0,
-   "date": "2026-10-22",
-   "chg_1w": -1.0,
-   "chg_1m": 5.0
+   "date": "2026-10-23",
+   "chg_1w": -3.0,
+   "chg_1m": 10.0
   },
   "acm_tp10": {
    "value": 0.639,
@@ -52,28 +52,28 @@
    "chg_1m": -0.061
   },
   "be_5y": {
-   "value": 2.45,
-   "date": "2026-10-22",
-   "chg_1w": 0.12,
-   "chg_1m": 0.13
+   "value": 2.48,
+   "date": "2026-10-23",
+   "chg_1w": 0.11,
+   "chg_1m": 0.14
   },
   "be_10y": {
-   "value": 2.32,
-   "date": "2026-10-22",
-   "chg_1w": 0.0,
+   "value": 2.34,
+   "date": "2026-10-23",
+   "chg_1w": -0.01,
    "chg_1m": -0.01
   },
   "be_5y5y": {
-   "value": 2.19,
-   "date": "2026-10-22",
-   "chg_1w": -0.12,
-   "chg_1m": -0.15
+   "value": 2.2,
+   "date": "2026-10-23",
+   "chg_1w": -0.13,
+   "chg_1m": -0.16
   },
   "real_10y": {
-   "value": 2.64,
-   "date": "2026-10-22",
-   "chg_1w": -0.14,
-   "chg_1m": 0.01
+   "value": 2.66,
+   "date": "2026-10-23",
+   "chg_1w": -0.08,
+   "chg_1m": -0.1
   },
   "sofr": {
    "value": 3.9,
@@ -89,13 +89,13 @@
   },
   "ff_upper": {
    "value": 4.0,
-   "date": "2026-10-22",
+   "date": "2026-10-23",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "ff_lower": {
    "value": 3.75,
-   "date": "2026-10-22",
+   "date": "2026-10-23",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
@@ -106,10 +106,10 @@
    "chg_1m": -2.0
   },
   "gold": {
-   "value": 4060.4,
-   "date": "2026-10-22",
-   "chg_1w": -109.7,
-   "chg_1m": -316.0
+   "value": 4007.9,
+   "date": "2026-10-23",
+   "chg_1w": -173.2,
+   "chg_1m": -310.5
   },
   "fwd_1y1y": {
    "value": 4.954,
@@ -542,7 +542,8 @@
    "2026-10-21": 84.0,
    "2026-10-22": 62.3,
    "2026-10-23": 67.3
-  }
+  },
+  "stale": true
  },
  "auctions": {
   "recent": [{"date": "2026-10-08", "term": "29-Year 10-Month", "type": "Bond", "reopening": true, "size_bn": 22.0, "high_yield": 5.618, "btc": 2.54, "dealer_pct": 6.6, "indirect_pct": 70.4, "direct_pct": 20.3, "btc_avg6": 2.41, "dealer_pct_avg6": 9.08, "indirect_pct_avg6": 61.77}, {"date": "2026-10-07", "term": "9-Year 10-Month", "type": "Note", "reopening": true, "size_bn": 39.0, "high_yield": 5.3, "btc": 2.77, "dealer_pct": 2.5, "indirect_pct": 77.8, "direct_pct": 16.6, "btc_avg6": 2.54, "dealer_pct_avg6": 7.72, "indirect_pct_avg6": 66.43}, {"date": "2026-10-06", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": 4.932, "btc": 2.62, "dealer_pct": 10.3, "indirect_pct": 55.3, "direct_pct": 30.4, "btc_avg6": 2.65, "dealer_pct_avg6": 11.18, "indirect_pct_avg6": 58.42}, {"date": "2026-09-24", "term": "7-Year", "type": "Note", "reopening": false, "size_bn": 44.0, "high_yield": 5.085, "btc": 2.42, "dealer_pct": 10.8, "indirect_pct": 49.1, "direct_pct": 26.0, "btc_avg6": 2.49, "dealer_pct_avg6": 10.7, "indirect_pct_avg6": 57.2}, {"date": "2026-09-23", "term": "5-Year", "type": "Note", "reopening": false, "size_bn": 70.0, "high_yield": 5.033, "btc": 2.21, "dealer_pct": 13.6, "indirect_pct": 47.0, "direct_pct": 25.9, "btc_avg6": 2.33, "dealer_pct_avg6": 11.45, "indirect_pct_avg6": 57.68}, {"date": "2026-09-22", "term": "2-Year", "type": "Note", "reopening": false, "size_bn": 69.0, "high_yield": 4.787, "btc": 2.63, "dealer_pct": 11.2, "indirect_pct": 49.3, "direct_pct": 24.7, "btc_avg6": 2.6, "dealer_pct_avg6": 11.55, "indirect_pct_avg6": 51.35}, {"date": "2026-09-15", "term": "19-Year 11-Month", "type": "Bond", "reopening": true, "size_bn": 13.0, "high_yield": 5.42, "btc": 2.57, "dealer_pct": 16.7, "indirect_pct": 52.1, "direct_pct": 30.5, "btc_avg6": 2.65, "dealer_pct_avg6": 9.82, "indirect_pct_avg6": 62.53}, {"date": "2026-09-10", "term": "29-Year 11-Month", "type": "Bond", "reopening": true, "size_bn": 22.0, "high_yield": 5.308, "btc": 2.61, "dealer_pct": 2.2, "indirect_pct": 79.3, "direct_pct": 18.3, "btc_avg6": 2.38, "dealer_pct_avg6": 10.27, "indirect_pct_avg6": 59.1}, {"date": "2026-09-09", "term": "9-Year 11-Month", "type": "Note", "reopening": true, "size_bn": 39.0, "high_yield": 4.834, "btc": 2.71, "dealer_pct": 4.3, "indirect_pct": 79.0, "direct_pct": 16.5, "btc_avg6": 2.49, "dealer_pct_avg6": 9.12, "indirect_pct_avg6": 65.65}, {"date": "2026-09-08", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": 4.474, "btc": 2.72, "dealer_pct": 10.8, "indirect_pct": 61.7, "direct_pct": 26.8, "btc_avg6": 2.62, "dealer_pct_avg6": 12.62, "indirect_pct_avg6": 58.07}, {"date": "2026-08-27", "term": "7-Year", "type": "Note", "reopening": false, "size_bn": 44.0, "high_yield": 4.512, "btc": 2.5, "dealer_pct": 10.8, "indirect_pct": 53.7, "direct_pct": 23.8, "btc_avg6": 2.49, "dealer_pct_avg6": 10.45, "indirect_pct_avg6": 57.7}, {"date": "2026-08-26", "term": "5-Year", "type": "Note", "reopening": false, "size_bn": 70.0, "high_yield": 4.393, "btc": 2.37, "dealer_pct": 8.9, "indirect_pct": 54.3, "direct_pct": 25.1, "btc_avg6": 2.32, "dealer_pct_avg6": 11.87, "indirect_pct_avg6": 57.92}, {"date": "2026-08-25", "term": "2-Year", "type": "Note", "reopening": false, "size_bn": 69.0, "high_yield": 4.204, "btc": 2.6, "dealer_pct": 9.5, "indirect_pct": 57.7, "direct_pct": 20.2, "btc_avg6": 2.61, "dealer_pct_avg6": 11.42, "indirect_pct_avg6": 50.02}, {"date": "2026-08-19", "term": "20-Year", "type": "Bond", "reopening": false, "size_bn": 16.0, "high_yield": 5.204, "btc": 2.53, "dealer_pct": 10.9, "indirect_pct": 55.1, "direct_pct": 21.5, "btc_avg6": 2.62, "dealer_pct_avg6": 10.62, "indirect_pct_avg6": 61.53}, {"date": "2026-08-13", "term": "30-Year", "type": "Bond", "reopening": false, "size_bn": 25.0, "high_yield": 5.216, "btc": 2.39, "dealer_pct": 9.2, "indirect_pct": 53.1, "direct_pct": 17.2, "btc_avg6": 2.43, "dealer_pct_avg6": 9.5, "indirect_pct_avg6": 59.32}, {"date": "2026-08-12", "term": "10-Year", "type": "Note", "reopening": false, "size_bn": 42.0, "high_yield": 4.683, "btc": 2.53, "dealer_pct": 6.8, "indirect_pct": 61.0, "direct_pct": 11.7, "btc_avg6": 2.47, "dealer_pct_avg6": 9.72, "indirect_pct_avg6": 63.83}, {"date": "2026-08-11", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": 4.291, "btc": 2.71, "dealer_pct": 9.3, "indirect_pct": 50.7, "direct_pct": 19.0, "btc_avg6": 2.6, "dealer_pct_avg6": 12.48, "indirect_pct_avg6": 57.0}, {"date": "2026-07-28", "term": "7-Year", "type": "Note", "reopening": false, "size_bn": 44.0, "high_yield": 4.473, "btc": 2.49, "dealer_pct": 11.7, "indirect_pct": 63.0, "direct_pct": 15.2, "btc_avg6": 2.48, "dealer_pct_avg6": 10.2, "indirect_pct_avg6": 57.58}, {"date": "2026-07-27", "term": "5-Year", "type": "Note", "reopening": false, "size_bn": 70.0, "high_yield": 4.408, "btc": 2.28, "dealer_pct": 12.2, "indirect_pct": 53.2, "direct_pct": 24.4, "btc_avg6": 2.33, "dealer_pct_avg6": 11.52, "indirect_pct_avg6": 58.48}, {"date": "2026-07-27", "term": "2-Year", "type": "Note", "reopening": false, "size_bn": 69.0, "high_yield": 4.315, "btc": 2.66, "dealer_pct": 8.3, "indirect_pct": 50.1, "direct_pct": 30.1, "btc_avg6": 2.62, "dealer_pct_avg6": 11.17, "indirect_pct_avg6": 51.65}],
@@ -699,15 +700,18 @@
   },
   "fred:DFEDTARU": {
    "ok": true,
-   "last": "2026-10-23"
+   "last": "2026-10-24"
   },
   "fred:DFEDTARL": {
    "ok": true,
-   "last": "2026-10-23"
+   "last": "2026-10-24"
   },
   "fred:THREEFYTP10": {
    "ok": true,
    "last": "2026-10-16"
+  },
+  "treasury:curves": {
+   "ok": true
   },
   "nyfed:acm": {
    "ok": true
@@ -722,10 +726,12 @@
    "ok": true
   },
   "refinitiv:policy_pricing": {
-   "ok": true
+   "ok": false,
+   "error": "no credentials configured"
   },
   "refinitiv:ois_history": {
-   "ok": true
+   "ok": false,
+   "error": "no fresh OIS history this run"
   },
   "yahoo:gold": {
    "ok": true
