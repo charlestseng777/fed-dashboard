@@ -2,15 +2,14 @@ name: Update data
 
 on:
   schedule:
-    # Once each weekday at 05:20 UK time, before the London open. Cron is UTC
-    # and ignores daylight saving, so there is a slot for each season: 04:20
-    # UTC is 05:20 in summer (BST), 05:20 UTC is 05:20 in winter (GMT). The
-    # gate job below lets only the one that lands at 05:20 UK time through.
-    # Monday's run picks up Friday's close. Staggered from the other dashboards
-    # (UK 05:15, Fed 05:20, macro monitor 05:30) because they share one
-    # Refinitiv account, which allows a single session at a time.
-    - cron: '20 4 * * 1-5'
-    - cron: '20 5 * * 1-5'
+    # Target: 05:18 UK on weekdays, before the London open. GitHub often
+    # starts scheduled runs late (hours late at busy times) and sometimes
+    # drops them, so there are several slots up to ~09:00 UK; the gate job
+    # runs the first one at or after 05:18 UK and skips the rest once a
+    # fetch has succeeded today. Staggered with the other dashboards (UK
+    # 05:13, Fed 05:18, macro monitor 05:33), which share one Refinitiv
+    # account that allows a single session at a time.
+    - cron: '18,48 4-8 * * 1-5'
   workflow_dispatch:
     inputs:
       force:
@@ -28,6 +27,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: read   # the gate checks whether today's fetch already ran
 
 jobs:
   gate:
@@ -36,25 +36,28 @@ jobs:
       run: ${{ steps.check.outputs.run }}
     steps:
       - id: check
-        # Each morning both UTC slots fire; only the one that is 05:20 UK time
-        # in the current season goes ahead: 04:20 UTC while the UK is on BST
-        # (+0100), 05:20 UTC while it is on GMT (+0000). Decided by which cron
-        # triggered the run, not the clock, because GitHub can start
-        # scheduled runs hours late. Manual runs always go ahead.
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if [ "${{ github.event_name }}" != "schedule" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          offset=$(TZ=Europe/London date +%z)
-          slot="${{ github.event.schedule }}"
-          echo "UK offset ${offset}, triggered by '${slot}'"
-          if { [ "$offset" = "+0100" ] && [ "$slot" = "20 4 * * 1-5" ]; } || \
-             { [ "$offset" = "+0000" ] && [ "$slot" = "20 5 * * 1-5" ]; }; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Not this season's 05:20 UK slot; skipping."
-            echo "run=false" >> "$GITHUB_OUTPUT"
+          now=$(TZ=Europe/London date +%H%M); dow=$(TZ=Europe/London date +%u)
+          if [ "$dow" -gt 5 ] || [ "$now" -lt 0518 ] || [ "$now" -ge 0900 ]; then
+            echo "Outside the 05:18-09:00 UK weekday window ($now); skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
+          # Skip if a fetch already succeeded today (since 05:00 UK).
+          since=$(date -u -d "@$(TZ=Europe/London date -d 'today 05:00' +%s)" +%Y-%m-%dT%H:%M:%SZ)
+          repo="${{ github.repository }}"
+          for id in $(gh api "repos/$repo/actions/workflows/update-data.yml/runs?created=%3E%3D$since&status=success&per_page=30" --jq '.workflow_runs[].id'); do
+            n=$(gh api "repos/$repo/actions/runs/$id/jobs" --jq '[.jobs[] | select(.name=="fetch" and .conclusion=="success")] | length')
+            if [ "${n:-0}" -gt 0 ]; then
+              echo "Today's fetch already ran (run $id); skipping."
+              echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+          done
+          echo "run=true" >> "$GITHUB_OUTPUT"
 
   fetch:
     needs: gate

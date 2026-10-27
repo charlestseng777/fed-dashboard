@@ -50,10 +50,10 @@ endpoint is used.
 
 ## How it runs
 
-`.github/workflows/update-data.yml` runs once each weekday at 05:20 UK time,
+`.github/workflows/update-data.yml` runs once each weekday from 05:18 UK time,
 before the London open and after the previous US session's data, FOMC and
-market closes. Cron is UTC, so there are two slots (04:20 and 05:20 UTC) and a
-gate step lets through only the one that lands at 05:20 UK time in the current
+market closes. GitHub often starts scheduled runs late, so there are several cron slots up to 09:00 UK and a
+gate job runs the first one after 05:18 UK and skips the rest once today's fetch has succeeded. Previously:
 season. Monday's run picks up Friday's close. Each run:
 
 1. `python fetcher/fetch.py` pulls every source. Each source is independent: one
