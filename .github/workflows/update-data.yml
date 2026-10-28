@@ -4,12 +4,12 @@ on:
   schedule:
     # Target: 05:18 UK on weekdays, before the London open. GitHub often
     # starts scheduled runs late (hours late at busy times) and sometimes
-    # drops them, so there are several slots up to ~09:00 UK; the gate job
+    # drops them, so there are several slots up to ~08:30 UK; the gate job
     # runs the first one at or after 05:18 UK and skips the rest once a
     # fetch has succeeded today. Staggered with the other dashboards (UK
     # 05:13, Fed 05:18, macro monitor 05:33), which share one Refinitiv
     # account that allows a single session at a time.
-    - cron: '18,48 4-8 * * 1-5'
+    - cron: '18,48 4-7 * * 1-5'
   workflow_dispatch:
     inputs:
       force:
@@ -43,8 +43,8 @@ jobs:
             echo "run=true" >> "$GITHUB_OUTPUT"; exit 0
           fi
           now=$(TZ=Europe/London date +%H%M); dow=$(TZ=Europe/London date +%u)
-          if [ "$dow" -gt 5 ] || [ "$now" -lt 0518 ] || [ "$now" -ge 0900 ]; then
-            echo "Outside the 05:18-09:00 UK weekday window ($now); skipping."
+          if [ "$dow" -gt 5 ] || [ "$now" -lt 0518 ] || [ "$now" -ge 0830 ]; then
+            echo "Outside the 05:18-08:30 UK weekday window ($now); skipping."
             echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           # Skip if a fetch already succeeded today (since 05:00 UK).
