@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T09:38:06+00:00",
+ "generated_at": "2026-10-28T09:47:57+00:00",
  "latest_month": "2026-09",
  "latest_daily": "2026-10-27",
  "snapshot": {
@@ -124,16 +124,16 @@
    "chg_1m": 0.148
   },
   "ois_1y": {
-   "value": 4.424,
-   "date": "2026-10-23",
-   "chg_1w": -0.032,
-   "chg_1m": -0.15
+   "value": 4.479,
+   "date": "2026-10-27",
+   "chg_1w": -0.028,
+   "chg_1m": -0.07
   },
   "ois_2y": {
-   "value": 4.534,
-   "date": "2026-10-23",
-   "chg_1w": -0.043,
-   "chg_1m": -0.214
+   "value": 4.588,
+   "date": "2026-10-27",
+   "chg_1w": -0.056,
+   "chg_1m": -0.119
   }
  },
  "fomc": {
@@ -259,13 +259,12 @@
  "policy_pricing": {
   "source": "refinitiv",
   "method": "historical",
-  "as_of": "2026-10-26",
+  "as_of": "2026-10-28",
   "reference_rate": 3.88,
-  "meetings": [{"date": "2026-10-28", "implied_rate": 3.905, "change_bp": 2.5, "cumulative_bp": 2.5}, {"date": "2026-12-09", "implied_rate": 4.095, "change_bp": 19.0, "cumulative_bp": 21.5}, {"date": "2027-01-27", "implied_rate": 4.175, "change_bp": 8.0, "cumulative_bp": 29.5}, {"date": "2027-03-17", "implied_rate": 4.319, "change_bp": 14.4, "cumulative_bp": 43.9}, {"date": "2027-04-28", "implied_rate": 4.4, "change_bp": 8.1, "cumulative_bp": 52.0}, {"date": "2027-06-09", "implied_rate": 4.493, "change_bp": 9.3, "cumulative_bp": 61.3}, {"date": "2027-07-28", "implied_rate": 4.525, "change_bp": 3.2, "cumulative_bp": 64.5}, {"date": "2027-09-15", "implied_rate": 4.565, "change_bp": 4.0, "cumulative_bp": 68.5}, {"date": "2027-10-27", "implied_rate": 4.488, "change_bp": -7.7, "cumulative_bp": 60.8}],
-  "futures_strip": [{"month": "2026-10", "ric": "FFc1", "price": 96.1175, "implied_rate": 3.882}, {"month": "2026-11", "ric": "FFc2", "price": 96.095, "implied_rate": 3.905}, {"month": "2026-12", "ric": "FFc3", "price": 95.96, "implied_rate": 4.04}, {"month": "2027-01", "ric": "FFc4", "price": 95.9, "implied_rate": 4.1}, {"month": "2027-02", "ric": "FFc5", "price": 95.825, "implied_rate": 4.175}, {"month": "2027-03", "ric": "FFc6", "price": 95.76, "implied_rate": 4.24}, {"month": "2027-04", "ric": "FFc7", "price": 95.675, "implied_rate": 4.325}, {"month": "2027-05", "ric": "FFc8", "price": 95.6, "implied_rate": 4.4}, {"month": "2027-06", "ric": "FFc9", "price": 95.535, "implied_rate": 4.465}, {"month": "2027-07", "ric": "FFc10", "price": 95.5, "implied_rate": 4.5}, {"month": "2027-08", "ric": "FFc11", "price": 95.475, "implied_rate": 4.525}, {"month": "2027-09", "ric": "FFc12", "price": 95.455, "implied_rate": 4.545}, {"month": "2027-10", "ric": "FFc13", "price": 95.445, "implied_rate": 4.555}],
-  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.929}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.048}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.183}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.424}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.534}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.543}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.527}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.605}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.688}],
+  "meetings": [{"date": "2026-10-28", "implied_rate": 3.895, "change_bp": 1.5, "cumulative_bp": 1.5}, {"date": "2026-12-09", "implied_rate": 4.106, "change_bp": 21.1, "cumulative_bp": 22.6}, {"date": "2027-01-27", "implied_rate": 4.205, "change_bp": 9.9, "cumulative_bp": 32.5}, {"date": "2027-03-17", "implied_rate": 4.371, "change_bp": 16.6, "cumulative_bp": 49.1}, {"date": "2027-04-28", "implied_rate": 4.475, "change_bp": 10.4, "cumulative_bp": 59.5}, {"date": "2027-06-09", "implied_rate": 4.575, "change_bp": 10.0, "cumulative_bp": 69.5}, {"date": "2027-07-28", "implied_rate": 4.605, "change_bp": 3.0, "cumulative_bp": 72.5}, {"date": "2027-09-15", "implied_rate": 4.645, "change_bp": 4.0, "cumulative_bp": 76.5}, {"date": "2027-10-27", "implied_rate": 4.568, "change_bp": -7.7, "cumulative_bp": 68.8}],
+  "futures_strip": [{"month": "2026-10", "ric": "FFc1", "price": 96.12, "implied_rate": 3.88}, {"month": "2026-11", "ric": "FFc2", "price": 96.105, "implied_rate": 3.895}, {"month": "2026-12", "ric": "FFc3", "price": 95.955, "implied_rate": 4.045}, {"month": "2027-01", "ric": "FFc4", "price": 95.885, "implied_rate": 4.115}, {"month": "2027-02", "ric": "FFc5", "price": 95.795, "implied_rate": 4.205}, {"month": "2027-03", "ric": "FFc6", "price": 95.72, "implied_rate": 4.28}, {"month": "2027-04", "ric": "FFc7", "price": 95.615, "implied_rate": 4.385}, {"month": "2027-05", "ric": "FFc8", "price": 95.525, "implied_rate": 4.475}, {"month": "2027-06", "ric": "FFc9", "price": 95.455, "implied_rate": 4.545}, {"month": "2027-07", "ric": "FFc10", "price": 95.42, "implied_rate": 4.58}, {"month": "2027-08", "ric": "FFc11", "price": 95.395, "implied_rate": 4.605}, {"month": "2027-09", "ric": "FFc12", "price": 95.375, "implied_rate": 4.625}, {"month": "2027-10", "ric": "FFc13", "price": 95.365, "implied_rate": 4.635}],
+  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.924}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.055}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.211}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.479}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.588}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.586}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.553}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.602}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.664}],
   "priced_12m_history": {
-   "2025-09-22": -112.7,
    "2025-09-23": -113.0,
    "2025-09-24": -110.5,
    "2025-09-25": -100.5,
@@ -540,9 +539,10 @@
    "2026-10-20": 79.5,
    "2026-10-21": 84.0,
    "2026-10-22": 62.3,
-   "2026-10-23": 67.3
-  },
-  "stale": true
+   "2026-10-23": 67.3,
+   "2026-10-26": 71.0,
+   "2026-10-27": 75.5
+  }
  },
  "auctions": {
   "recent": [{"date": "2026-10-08", "term": "29-Year 10-Month", "type": "Bond", "reopening": true, "size_bn": 22.0, "high_yield": 5.618, "btc": 2.54, "dealer_pct": 6.6, "indirect_pct": 70.4, "direct_pct": 20.3, "btc_avg6": 2.41, "dealer_pct_avg6": 9.08, "indirect_pct_avg6": 61.77}, {"date": "2026-10-07", "term": "9-Year 10-Month", "type": "Note", "reopening": true, "size_bn": 39.0, "high_yield": 5.3, "btc": 2.77, "dealer_pct": 2.5, "indirect_pct": 77.8, "direct_pct": 16.6, "btc_avg6": 2.54, "dealer_pct_avg6": 7.72, "indirect_pct_avg6": 66.43}, {"date": "2026-10-06", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": 4.932, "btc": 2.62, "dealer_pct": 10.3, "indirect_pct": 55.3, "direct_pct": 30.4, "btc_avg6": 2.65, "dealer_pct_avg6": 11.18, "indirect_pct_avg6": 58.42}, {"date": "2026-09-24", "term": "7-Year", "type": "Note", "reopening": false, "size_bn": 44.0, "high_yield": 5.085, "btc": 2.42, "dealer_pct": 10.8, "indirect_pct": 49.1, "direct_pct": 26.0, "btc_avg6": 2.49, "dealer_pct_avg6": 10.7, "indirect_pct_avg6": 57.2}, {"date": "2026-09-23", "term": "5-Year", "type": "Note", "reopening": false, "size_bn": 70.0, "high_yield": 5.033, "btc": 2.21, "dealer_pct": 13.6, "indirect_pct": 47.0, "direct_pct": 25.9, "btc_avg6": 2.33, "dealer_pct_avg6": 11.45, "indirect_pct_avg6": 57.68}, {"date": "2026-09-22", "term": "2-Year", "type": "Note", "reopening": false, "size_bn": 69.0, "high_yield": 4.787, "btc": 2.63, "dealer_pct": 11.2, "indirect_pct": 49.3, "direct_pct": 24.7, "btc_avg6": 2.6, "dealer_pct_avg6": 11.55, "indirect_pct_avg6": 51.35}, {"date": "2026-09-15", "term": "19-Year 11-Month", "type": "Bond", "reopening": true, "size_bn": 13.0, "high_yield": 5.42, "btc": 2.57, "dealer_pct": 16.7, "indirect_pct": 52.1, "direct_pct": 30.5, "btc_avg6": 2.65, "dealer_pct_avg6": 9.82, "indirect_pct_avg6": 62.53}, {"date": "2026-09-10", "term": "29-Year 11-Month", "type": "Bond", "reopening": true, "size_bn": 22.0, "high_yield": 5.308, "btc": 2.61, "dealer_pct": 2.2, "indirect_pct": 79.3, "direct_pct": 18.3, "btc_avg6": 2.38, "dealer_pct_avg6": 10.27, "indirect_pct_avg6": 59.1}, {"date": "2026-09-09", "term": "9-Year 11-Month", "type": "Note", "reopening": true, "size_bn": 39.0, "high_yield": 4.834, "btc": 2.71, "dealer_pct": 4.3, "indirect_pct": 79.0, "direct_pct": 16.5, "btc_avg6": 2.49, "dealer_pct_avg6": 9.12, "indirect_pct_avg6": 65.65}, {"date": "2026-09-08", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": 4.474, "btc": 2.72, "dealer_pct": 10.8, "indirect_pct": 61.7, "direct_pct": 26.8, "btc_avg6": 2.62, "dealer_pct_avg6": 12.62, "indirect_pct_avg6": 58.07}, {"date": "2026-08-27", "term": "7-Year", "type": "Note", "reopening": false, "size_bn": 44.0, "high_yield": 4.512, "btc": 2.5, "dealer_pct": 10.8, "indirect_pct": 53.7, "direct_pct": 23.8, "btc_avg6": 2.49, "dealer_pct_avg6": 10.45, "indirect_pct_avg6": 57.7}, {"date": "2026-08-26", "term": "5-Year", "type": "Note", "reopening": false, "size_bn": 70.0, "high_yield": 4.393, "btc": 2.37, "dealer_pct": 8.9, "indirect_pct": 54.3, "direct_pct": 25.1, "btc_avg6": 2.32, "dealer_pct_avg6": 11.87, "indirect_pct_avg6": 57.92}, {"date": "2026-08-25", "term": "2-Year", "type": "Note", "reopening": false, "size_bn": 69.0, "high_yield": 4.204, "btc": 2.6, "dealer_pct": 9.5, "indirect_pct": 57.7, "direct_pct": 20.2, "btc_avg6": 2.61, "dealer_pct_avg6": 11.42, "indirect_pct_avg6": 50.02}, {"date": "2026-08-19", "term": "20-Year", "type": "Bond", "reopening": false, "size_bn": 16.0, "high_yield": 5.204, "btc": 2.53, "dealer_pct": 10.9, "indirect_pct": 55.1, "direct_pct": 21.5, "btc_avg6": 2.62, "dealer_pct_avg6": 10.62, "indirect_pct_avg6": 61.53}, {"date": "2026-08-13", "term": "30-Year", "type": "Bond", "reopening": false, "size_bn": 25.0, "high_yield": 5.216, "btc": 2.39, "dealer_pct": 9.2, "indirect_pct": 53.1, "direct_pct": 17.2, "btc_avg6": 2.43, "dealer_pct_avg6": 9.5, "indirect_pct_avg6": 59.32}, {"date": "2026-08-12", "term": "10-Year", "type": "Note", "reopening": false, "size_bn": 42.0, "high_yield": 4.683, "btc": 2.53, "dealer_pct": 6.8, "indirect_pct": 61.0, "direct_pct": 11.7, "btc_avg6": 2.47, "dealer_pct_avg6": 9.72, "indirect_pct_avg6": 63.83}, {"date": "2026-08-11", "term": "3-Year", "type": "Note", "reopening": false, "size_bn": 58.0, "high_yield": 4.291, "btc": 2.71, "dealer_pct": 9.3, "indirect_pct": 50.7, "direct_pct": 19.0, "btc_avg6": 2.6, "dealer_pct_avg6": 12.48, "indirect_pct_avg6": 57.0}, {"date": "2026-07-28", "term": "7-Year", "type": "Note", "reopening": false, "size_bn": 44.0, "high_yield": 4.473, "btc": 2.49, "dealer_pct": 11.7, "indirect_pct": 63.0, "direct_pct": 15.2, "btc_avg6": 2.48, "dealer_pct_avg6": 10.2, "indirect_pct_avg6": 57.58}, {"date": "2026-07-27", "term": "5-Year", "type": "Note", "reopening": false, "size_bn": 70.0, "high_yield": 4.408, "btc": 2.28, "dealer_pct": 12.2, "indirect_pct": 53.2, "direct_pct": 24.4, "btc_avg6": 2.33, "dealer_pct_avg6": 11.52, "indirect_pct_avg6": 58.48}, {"date": "2026-07-27", "term": "2-Year", "type": "Note", "reopening": false, "size_bn": 69.0, "high_yield": 4.315, "btc": 2.66, "dealer_pct": 8.3, "indirect_pct": 50.1, "direct_pct": 30.1, "btc_avg6": 2.62, "dealer_pct_avg6": 11.17, "indirect_pct_avg6": 51.65}],
@@ -725,12 +725,10 @@
    "ok": true
   },
   "refinitiv:policy_pricing": {
-   "ok": false,
-   "error": "no credentials configured"
+   "ok": true
   },
   "refinitiv:ois_history": {
-   "ok": false,
-   "error": "no fresh OIS history this run"
+   "ok": true
   },
   "yahoo:gold": {
    "ok": true
