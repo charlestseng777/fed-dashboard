@@ -1,115 +1,115 @@
 {
- "generated_at": "2026-10-30T05:18:35+00:00",
+ "generated_at": "2026-11-02T05:18:33+00:00",
  "latest_month": "2026-09",
- "latest_daily": "2026-10-29",
+ "latest_daily": "2026-10-30",
  "snapshot": {
   "ust_2y": {
-   "value": 4.61,
-   "date": "2026-10-29",
-   "chg_1w": -0.04,
-   "chg_1m": -0.28
+   "value": 4.56,
+   "date": "2026-10-30",
+   "chg_1w": -0.13,
+   "chg_1m": -0.32
   },
   "ust_5y": {
-   "value": 4.78,
-   "date": "2026-10-29",
-   "chg_1w": 0.0,
-   "chg_1m": -0.28
+   "value": 4.71,
+   "date": "2026-10-30",
+   "chg_1w": -0.11,
+   "chg_1m": -0.38
   },
   "ust_10y": {
-   "value": 4.98,
-   "date": "2026-10-29",
-   "chg_1w": 0.02,
-   "chg_1m": -0.28
+   "value": 4.94,
+   "date": "2026-10-30",
+   "chg_1w": -0.06,
+   "chg_1m": -0.35
   },
   "ust_30y": {
-   "value": 5.32,
-   "date": "2026-10-29",
-   "chg_1w": 0.03,
-   "chg_1m": -0.27
+   "value": 5.31,
+   "date": "2026-10-30",
+   "chg_1w": -0.02,
+   "chg_1m": -0.33
   },
   "s2s10": {
-   "value": 37.0,
-   "date": "2026-10-29",
-   "chg_1w": 6.0,
-   "chg_1m": 0.0
+   "value": 38.0,
+   "date": "2026-10-30",
+   "chg_1w": 7.0,
+   "chg_1m": -3.0
   },
   "s5s30": {
-   "value": 54.0,
-   "date": "2026-10-29",
-   "chg_1w": 3.0,
-   "chg_1m": 1.0
+   "value": 60.0,
+   "date": "2026-10-30",
+   "chg_1w": 9.0,
+   "chg_1m": 5.0
   },
   "acm_tp10": {
-   "value": 0.691,
-   "date": "2026-10-28",
-   "chg_1w": -0.027,
-   "chg_1m": -0.099
+   "value": 0.664,
+   "date": "2026-10-29",
+   "chg_1w": 0.025,
+   "chg_1m": -0.18
   },
   "acm_rn10": {
-   "value": 4.325,
-   "date": "2026-10-28",
-   "chg_1w": -0.043,
-   "chg_1m": -0.087
+   "value": 4.287,
+   "date": "2026-10-29",
+   "chg_1w": 0.0,
+   "chg_1m": -0.094
   },
   "be_5y": {
-   "value": 2.47,
-   "date": "2026-10-29",
-   "chg_1w": 0.02,
-   "chg_1m": 0.13
+   "value": 2.46,
+   "date": "2026-10-30",
+   "chg_1w": -0.02,
+   "chg_1m": 0.1
   },
   "be_10y": {
-   "value": 2.35,
-   "date": "2026-10-29",
-   "chg_1w": 0.03,
-   "chg_1m": 0.0
+   "value": 2.34,
+   "date": "2026-10-30",
+   "chg_1w": 0.0,
+   "chg_1m": -0.02
   },
   "be_5y5y": {
-   "value": 2.23,
-   "date": "2026-10-29",
-   "chg_1w": 0.04,
-   "chg_1m": -0.13
+   "value": 2.22,
+   "date": "2026-10-30",
+   "chg_1w": 0.02,
+   "chg_1m": -0.14
   },
   "real_10y": {
-   "value": 2.63,
-   "date": "2026-10-29",
-   "chg_1w": -0.01,
-   "chg_1m": -0.28
+   "value": 2.6,
+   "date": "2026-10-30",
+   "chg_1w": -0.06,
+   "chg_1m": -0.33
   },
   "sofr": {
    "value": 3.94,
-   "date": "2026-10-28",
-   "chg_1w": 0.06,
-   "chg_1m": 0.04
+   "date": "2026-10-29",
+   "chg_1w": 0.04,
+   "chg_1m": 0.06
   },
   "effr": {
    "value": 3.88,
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "ff_upper": {
    "value": 4.0,
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "ff_lower": {
    "value": 3.75,
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "priced_12m_proxy": {
-   "value": 59.0,
-   "date": "2026-10-28",
-   "chg_1w": -5.0,
-   "chg_1m": -12.0
+   "value": 54.0,
+   "date": "2026-10-29",
+   "chg_1w": 1.0,
+   "chg_1m": -16.0
   },
   "gold": {
-   "value": 4031.4,
+   "value": 3898.9,
    "date": "2026-10-29",
-   "chg_1w": -29.0,
-   "chg_1m": -148.3
+   "chg_1w": -109.0,
+   "chg_1m": -287.8
   },
   "fwd_1y1y": {
    "value": 4.889,
@@ -200,7 +200,7 @@
  "nowcasts": {
   "cleveland": {
    "monthly": [{"period": "October 2026", "values": {"CPI Inflation": 0.24, "Core CPI Inflation": 0.21, "PCE Inflation": 0.27, "Core PCE Inflation": 0.26}}],
-   "quarterly": [{"period": "2026 Q4", "values": {"CPI Inflation": 5.13, "Core CPI Inflation": 3.02, "PCE Inflation": 4.45, "Core PCE Inflation": 3.33}}]
+   "quarterly": [{"period": "2026 Q4", "values": {"CPI Inflation": 5.08, "Core CPI Inflation": 3.02, "PCE Inflation": 4.42, "Core PCE Inflation": 3.33}}]
   },
   "gdpnow": {
    "quarter": "2026-Q4",
@@ -254,7 +254,7 @@
   {"quarter":"2025-Q4","gdp_growth":0.2,"gdpnow":4.24,"eci":3.41},
   {"quarter":"2026-Q1","gdp_growth":2.5,"gdpnow":1.24,"eci":3.43},
   {"quarter":"2026-Q2","gdp_growth":2.2,"gdpnow":1.54,"eci":3.38},
-  {"quarter":"2026-Q3","gdp_growth":3.4,"gdpnow":3.27,"eci":null},
+  {"quarter":"2026-Q3","gdp_growth":3.4,"gdpnow":3.27,"eci":3.37},
   {"quarter":"2026-Q4","gdp_growth":null,"gdpnow":3.22,"eci":null}
  ],
  "policy_pricing": {
@@ -551,7 +551,7 @@
   "upcoming": []
  },
  "fed_news": [{"kind": "monetary", "title": "Federal Reserve issues FOMC statement", "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm", "date": "2026-10-28"}, {"kind": "speeches", "title": "Bowman, Supervisory Modernization After Silicon Valley Bank", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261014a.htm", "date": "2026-10-15"}, {"kind": "monetary", "title": "Minutes of the Board's discount rate meetings on August 17, September 9, and September 16, 2026", "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261013a.htm", "date": "2026-10-13"}, {"kind": "speeches", "title": "Waller, The Signaling Value of the Summary of Economic Projections", "url": "https://www.federalreserve.gov/newsevents/speech/waller20261008a.htm", "date": "2026-10-08"}, {"kind": "monetary", "title": "Minutes of the Federal Open Market Committee, September 15-16, 2026", "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261007a.htm", "date": "2026-10-07"}, {"kind": "speeches", "title": "Bowman, Modernizing the Regulatory and Supervisory Landscape", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261006a.htm", "date": "2026-10-06"}, {"kind": "speeches", "title": "Bowman, Modernizing Financial Regulation: Initial Observations from eSLR", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Jefferson, The U.S. Economy and Monetary Policy", "url": "https://www.federalreserve.gov/newsevents/speech/jefferson20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Waller, The Data Version of Godzilla versus Kong: FRED Takes on AI", "url": "https://www.federalreserve.gov/newsevents/speech/waller20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Cook, The Dual Mandate in Rural America", "url": "https://www.federalreserve.gov/newsevents/speech/cook20260930a.htm", "date": "2026-09-30"}, {"kind": "speeches", "title": "Waller, Payments in the Age of AI Agents", "url": "https://www.federalreserve.gov/newsevents/speech/waller20260928a.htm", "date": "2026-09-29"}, {"kind": "speeches", "title": "Barr, Economic Conditions and Monetary Policy", "url": "https://www.federalreserve.gov/newsevents/speech/barr20260929a.htm", "date": "2026-09-29"}],
- "upcoming_releases": [{"id": "cot", "label": "CFTC positioning (COT)", "date": "2026-10-30", "source": "CFTC"}, {"id": "claims", "label": "Initial jobless claims", "date": "2026-11-05", "source": "DoL"}, {"id": "PCE inflation", "label": "PCE inflation", "date": "2026-11-25", "source": "BEA"}, {"id": "fomc", "label": "FOMC decision + SEP", "date": "2026-12-09", "source": "Federal Reserve"}],
+ "upcoming_releases": [{"id": "claims", "label": "Initial jobless claims", "date": "2026-11-05", "source": "DoL"}, {"id": "cot", "label": "CFTC positioning (COT)", "date": "2026-11-06", "source": "CFTC"}, {"id": "PCE inflation", "label": "PCE inflation", "date": "2026-11-25", "source": "BEA"}, {"id": "fomc", "label": "FOMC decision + SEP", "date": "2026-12-09", "source": "Federal Reserve"}],
  "notes": [],
  "events": [{"id": "covid", "date": "2020-03", "category": "shock", "label": "COVID-19 shock", "description": "Emergency cuts take the target range to 0–0.25% and the Fed restarts large-scale asset purchases."}, {"id": "fait", "date": "2020-08", "category": "policy", "label": "Flexible average inflation targeting", "description": "Revised framework: the Fed aims for inflation moderately above 2% for some time after periods of undershooting."}, {"id": "liftoff", "date": "2022-03", "category": "policy", "label": "Hiking cycle begins", "description": "First rate rise since 2018, as inflation runs well above target."}, {"id": "svb", "date": "2023-03", "category": "shock", "label": "Regional bank stress", "description": "Silicon Valley Bank fails; the Fed sets up the Bank Term Funding Program."}, {"id": "peak", "date": "2023-07", "category": "policy", "label": "Final hike of the cycle", "description": "Target range reaches 5.25–5.50%, where it stays for over a year."}, {"id": "first-cut", "date": "2024-09", "category": "policy", "label": "Easing begins", "description": "A 50bp cut starts the easing cycle."}, {"id": "tariffs", "date": "2025-04", "category": "shock", "label": "Tariff shock", "description": "Broad US tariff increases announced, raising the near-term inflation outlook and growth risks."}],
  "sources": {
@@ -633,7 +633,7 @@
   },
   "fred:ECIALLCIV": {
    "ok": true,
-   "last": "2026-04-01"
+   "last": "2026-07-01"
   },
   "fred:GDPNOW": {
    "ok": true,
@@ -649,63 +649,63 @@
   },
   "fred:DGS3MO": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DGS6MO": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DGS1": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DGS2": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DGS5": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DGS10": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DGS30": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DFII10": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:T5YIE": {
    "ok": true,
-   "last": "2026-10-29"
+   "last": "2026-10-30"
   },
   "fred:T10YIE": {
    "ok": true,
-   "last": "2026-10-29"
+   "last": "2026-10-30"
   },
   "fred:T5YIFR": {
    "ok": true,
-   "last": "2026-10-29"
+   "last": "2026-10-30"
   },
   "fred:SOFR": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:EFFR": {
    "ok": true,
-   "last": "2026-10-28"
+   "last": "2026-10-29"
   },
   "fred:DFEDTARU": {
    "ok": true,
-   "last": "2026-10-29"
+   "last": "2026-11-01"
   },
   "fred:DFEDTARL": {
    "ok": true,
-   "last": "2026-10-29"
+   "last": "2026-11-01"
   },
   "fred:THREEFYTP10": {
    "ok": true,
