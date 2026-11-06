@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-11-05T05:18:38+00:00",
+ "generated_at": "2026-11-06T05:18:39+00:00",
  "latest_month": "2026-09",
- "latest_daily": "2026-11-04",
+ "latest_daily": "2026-11-05",
  "snapshot": {
   "ust_2y": {
-   "value": 4.58,
-   "date": "2026-11-04",
-   "chg_1w": -0.09,
-   "chg_1m": -0.26
+   "value": 4.46,
+   "date": "2026-11-05",
+   "chg_1w": -0.15,
+   "chg_1m": -0.33
   },
   "ust_5y": {
-   "value": 4.69,
-   "date": "2026-11-04",
-   "chg_1w": -0.16,
-   "chg_1m": -0.37
+   "value": 4.59,
+   "date": "2026-11-05",
+   "chg_1w": -0.19,
+   "chg_1m": -0.44
   },
   "ust_10y": {
-   "value": 4.9,
-   "date": "2026-11-04",
-   "chg_1w": -0.15,
-   "chg_1m": -0.41
+   "value": 4.84,
+   "date": "2026-11-05",
+   "chg_1w": -0.14,
+   "chg_1m": -0.43
   },
   "ust_30y": {
-   "value": 5.28,
-   "date": "2026-11-04",
-   "chg_1w": -0.09,
-   "chg_1m": -0.38
+   "value": 5.25,
+   "date": "2026-11-05",
+   "chg_1w": -0.07,
+   "chg_1m": -0.39
   },
   "s2s10": {
-   "value": 32.0,
-   "date": "2026-11-04",
-   "chg_1w": -6.0,
-   "chg_1m": -15.0
+   "value": 38.0,
+   "date": "2026-11-05",
+   "chg_1w": 1.0,
+   "chg_1m": -10.0
   },
   "s5s30": {
-   "value": 59.0,
-   "date": "2026-11-04",
-   "chg_1w": 7.0,
-   "chg_1m": -1.0
+   "value": 66.0,
+   "date": "2026-11-05",
+   "chg_1w": 12.0,
+   "chg_1m": 5.0
   },
   "acm_tp10": {
    "value": 0.677,
@@ -52,64 +52,64 @@
    "chg_1m": -0.094
   },
   "be_5y": {
-   "value": 2.3,
-   "date": "2026-11-04",
-   "chg_1w": -0.19,
-   "chg_1m": -0.06
+   "value": 2.26,
+   "date": "2026-11-05",
+   "chg_1w": -0.21,
+   "chg_1m": -0.11
   },
   "be_10y": {
-   "value": 2.26,
-   "date": "2026-11-04",
-   "chg_1w": -0.12,
-   "chg_1m": -0.1
+   "value": 2.24,
+   "date": "2026-11-05",
+   "chg_1w": -0.11,
+   "chg_1m": -0.12
   },
   "be_5y5y": {
    "value": 2.22,
-   "date": "2026-11-04",
-   "chg_1w": -0.05,
-   "chg_1m": -0.14
+   "date": "2026-11-05",
+   "chg_1w": -0.01,
+   "chg_1m": -0.13
   },
   "real_10y": {
-   "value": 2.64,
-   "date": "2026-11-04",
+   "value": 2.6,
+   "date": "2026-11-05",
    "chg_1w": -0.03,
    "chg_1m": -0.31
   },
   "sofr": {
-   "value": 3.97,
-   "date": "2026-11-03",
-   "chg_1w": 0.02,
-   "chg_1m": 0.09
+   "value": 3.94,
+   "date": "2026-11-04",
+   "chg_1w": 0.0,
+   "chg_1m": 0.05
   },
   "effr": {
    "value": 3.88,
-   "date": "2026-11-03",
+   "date": "2026-11-04",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "ff_upper": {
    "value": 4.0,
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "ff_lower": {
    "value": 3.75,
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "chg_1w": 0.0,
    "chg_1m": 0.0
   },
   "priced_12m_proxy": {
-   "value": 52.0,
-   "date": "2026-11-03",
-   "chg_1w": -10.0,
-   "chg_1m": -6.0
+   "value": 51.0,
+   "date": "2026-11-04",
+   "chg_1w": -8.0,
+   "chg_1m": -8.0
   },
   "gold": {
-   "value": 4073.0,
-   "date": "2026-11-04",
-   "chg_1w": 41.6,
-   "chg_1m": -114.1
+   "value": 4113.5,
+   "date": "2026-11-05",
+   "chg_1w": 214.6,
+   "chg_1m": -27.2
   },
   "fwd_1y1y": {
    "value": 4.751,
@@ -124,16 +124,16 @@
    "chg_1m": 0.06
   },
   "ois_1y": {
-   "value": 4.382,
-   "date": "2026-11-04",
-   "chg_1w": -0.063,
-   "chg_1m": -0.099
+   "value": 4.277,
+   "date": "2026-11-05",
+   "chg_1w": -0.103,
+   "chg_1m": -0.193
   },
   "ois_2y": {
-   "value": 4.439,
-   "date": "2026-11-04",
-   "chg_1w": -0.123,
-   "chg_1m": -0.241
+   "value": 4.328,
+   "date": "2026-11-05",
+   "chg_1w": -0.141,
+   "chg_1m": -0.328
   }
  },
  "fomc": {
@@ -200,7 +200,7 @@
  "nowcasts": {
   "cleveland": {
    "monthly": [{"period": "November 2026", "values": {"CPI Inflation": 0.19, "Core CPI Inflation": 0.2, "PCE Inflation": 0.25, "Core PCE Inflation": 0.26}}, {"period": "October 2026", "values": {"CPI Inflation": 0.24, "Core CPI Inflation": 0.21, "PCE Inflation": 0.27, "Core PCE Inflation": 0.26}}],
-   "quarterly": [{"period": "2026 Q4", "values": {"CPI Inflation": 4.31, "Core CPI Inflation": 3.02, "PCE Inflation": 3.99, "Core PCE Inflation": 3.33}}]
+   "quarterly": [{"period": "2026 Q4", "values": {"CPI Inflation": 4.07, "Core CPI Inflation": 3.02, "PCE Inflation": 3.85, "Core PCE Inflation": 3.33}}]
   },
   "gdpnow": {
    "quarter": "2026-Q4",
@@ -260,13 +260,12 @@
  "policy_pricing": {
   "source": "refinitiv",
   "method": "historical",
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "reference_rate": 3.88,
-  "meetings": [{"date": "2026-12-09", "implied_rate": 4.084, "change_bp": 20.4, "cumulative_bp": 20.4}, {"date": "2027-01-27", "implied_rate": 4.15, "change_bp": 6.6, "cumulative_bp": 27.0}, {"date": "2027-03-17", "implied_rate": 4.294, "change_bp": 14.4, "cumulative_bp": 41.4}, {"date": "2027-04-28", "implied_rate": 4.35, "change_bp": 5.6, "cumulative_bp": 47.0}, {"date": "2027-06-09", "implied_rate": 4.429, "change_bp": 7.9, "cumulative_bp": 54.9}, {"date": "2027-07-28", "implied_rate": 4.44, "change_bp": 1.1, "cumulative_bp": 56.0}, {"date": "2027-09-15", "implied_rate": 4.46, "change_bp": 2.0, "cumulative_bp": 58.0}, {"date": "2027-10-27", "implied_rate": 4.455, "change_bp": -0.5, "cumulative_bp": 57.5}],
-  "futures_strip": [{"month": "2026-11", "ric": "FFc1", "price": 96.12, "implied_rate": 3.88}, {"month": "2026-12", "ric": "FFc2", "price": 95.975, "implied_rate": 4.025}, {"month": "2027-01", "ric": "FFc3", "price": 95.905, "implied_rate": 4.095}, {"month": "2027-02", "ric": "FFc4", "price": 95.85, "implied_rate": 4.15}, {"month": "2027-03", "ric": "FFc5", "price": 95.785, "implied_rate": 4.215}, {"month": "2027-04", "ric": "FFc6", "price": 95.705, "implied_rate": 4.295}, {"month": "2027-05", "ric": "FFc7", "price": 95.65, "implied_rate": 4.35}, {"month": "2027-06", "ric": "FFc8", "price": 95.595, "implied_rate": 4.405}, {"month": "2027-07", "ric": "FFc9", "price": 95.57, "implied_rate": 4.43}, {"month": "2027-08", "ric": "FFc10", "price": 95.56, "implied_rate": 4.44}, {"month": "2027-09", "ric": "FFc11", "price": 95.55, "implied_rate": 4.45}, {"month": "2027-10", "ric": "FFc12", "price": 95.54, "implied_rate": 4.46}, {"month": "2027-11", "ric": "FFc13", "price": 95.545, "implied_rate": 4.455}],
-  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.901}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.06}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.18}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.382}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.439}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.428}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.406}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.502}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.634}],
+  "meetings": [{"date": "2026-12-09", "implied_rate": 4.042, "change_bp": 16.2, "cumulative_bp": 16.2}, {"date": "2027-01-27", "implied_rate": 4.085, "change_bp": 4.3, "cumulative_bp": 20.5}, {"date": "2027-03-17", "implied_rate": 4.185, "change_bp": 10.0, "cumulative_bp": 30.5}, {"date": "2027-04-28", "implied_rate": 4.22, "change_bp": 3.5, "cumulative_bp": 34.0}, {"date": "2027-06-09", "implied_rate": 4.284, "change_bp": 6.4, "cumulative_bp": 40.4}, {"date": "2027-07-28", "implied_rate": 4.295, "change_bp": 1.1, "cumulative_bp": 41.5}, {"date": "2027-09-15", "implied_rate": 4.315, "change_bp": 2.0, "cumulative_bp": 43.5}, {"date": "2027-10-27", "implied_rate": 4.31, "change_bp": -0.5, "cumulative_bp": 43.0}],
+  "futures_strip": [{"month": "2026-11", "ric": "FFc1", "price": 96.1225, "implied_rate": 3.877}, {"month": "2026-12", "ric": "FFc2", "price": 96.005, "implied_rate": 3.995}, {"month": "2027-01", "ric": "FFc3", "price": 95.95, "implied_rate": 4.05}, {"month": "2027-02", "ric": "FFc4", "price": 95.915, "implied_rate": 4.085}, {"month": "2027-03", "ric": "FFc5", "price": 95.87, "implied_rate": 4.13}, {"month": "2027-04", "ric": "FFc6", "price": 95.815, "implied_rate": 4.185}, {"month": "2027-05", "ric": "FFc7", "price": 95.78, "implied_rate": 4.22}, {"month": "2027-06", "ric": "FFc8", "price": 95.735, "implied_rate": 4.265}, {"month": "2027-07", "ric": "FFc9", "price": 95.715, "implied_rate": 4.285}, {"month": "2027-08", "ric": "FFc10", "price": 95.705, "implied_rate": 4.295}, {"month": "2027-09", "ric": "FFc11", "price": 95.695, "implied_rate": 4.305}, {"month": "2027-10", "ric": "FFc12", "price": 95.69, "implied_rate": 4.31}, {"month": "2027-11", "ric": "FFc13", "price": 95.69, "implied_rate": 4.31}],
+  "sofr_ois": [{"tenor": "1M", "ric": "USDSROIS1M=", "rate": 3.894}, {"tenor": "3M", "ric": "USDSROIS3M=", "rate": 4.034}, {"tenor": "6M", "ric": "USDSROIS6M=", "rate": 4.126}, {"tenor": "1Y", "ric": "USDSROIS1Y=", "rate": 4.277}, {"tenor": "2Y", "ric": "USDSROIS2Y=", "rate": 4.328}, {"tenor": "3Y", "ric": "USDSROIS3Y=", "rate": 4.327}, {"tenor": "5Y", "ric": "USDSROIS5Y=", "rate": 4.318}, {"tenor": "10Y", "ric": "USDSROIS10Y=", "rate": 4.438}, {"tenor": "30Y", "ric": "USDSROIS30Y=", "rate": 4.596}],
   "priced_12m_history": {
-   "2025-10-01": -104.7,
    "2025-10-02": -105.5,
    "2025-10-03": -103.0,
    "2025-10-06": -100.0,
@@ -542,7 +541,8 @@
    "2026-10-30": 56.2,
    "2026-11-02": 56.5,
    "2026-11-03": 59.8,
-   "2026-11-04": 57.5
+   "2026-11-04": 57.5,
+   "2026-11-05": 43.3
   }
  },
  "auctions": {
@@ -550,7 +550,7 @@
   "upcoming": []
  },
  "fed_news": [{"kind": "monetary", "title": "Federal Reserve issues FOMC statement", "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm", "date": "2026-10-28"}, {"kind": "speeches", "title": "Bowman, Supervisory Modernization After Silicon Valley Bank", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261014a.htm", "date": "2026-10-15"}, {"kind": "monetary", "title": "Minutes of the Board's discount rate meetings on August 17, September 9, and September 16, 2026", "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261013a.htm", "date": "2026-10-13"}, {"kind": "speeches", "title": "Waller, The Signaling Value of the Summary of Economic Projections", "url": "https://www.federalreserve.gov/newsevents/speech/waller20261008a.htm", "date": "2026-10-08"}, {"kind": "monetary", "title": "Minutes of the Federal Open Market Committee, September 15-16, 2026", "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261007a.htm", "date": "2026-10-07"}, {"kind": "speeches", "title": "Bowman, Modernizing the Regulatory and Supervisory Landscape", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261006a.htm", "date": "2026-10-06"}, {"kind": "speeches", "title": "Bowman, Modernizing Financial Regulation: Initial Observations from eSLR", "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Jefferson, The U.S. Economy and Monetary Policy", "url": "https://www.federalreserve.gov/newsevents/speech/jefferson20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Waller, The Data Version of Godzilla versus Kong: FRED Takes on AI", "url": "https://www.federalreserve.gov/newsevents/speech/waller20261001a.htm", "date": "2026-10-01"}, {"kind": "speeches", "title": "Cook, The Dual Mandate in Rural America", "url": "https://www.federalreserve.gov/newsevents/speech/cook20260930a.htm", "date": "2026-09-30"}, {"kind": "speeches", "title": "Waller, Payments in the Age of AI Agents", "url": "https://www.federalreserve.gov/newsevents/speech/waller20260928a.htm", "date": "2026-09-29"}, {"kind": "speeches", "title": "Barr, Economic Conditions and Monetary Policy", "url": "https://www.federalreserve.gov/newsevents/speech/barr20260929a.htm", "date": "2026-09-29"}],
- "upcoming_releases": [{"id": "claims", "label": "Initial jobless claims", "date": "2026-11-05", "source": "DoL"}, {"id": "cot", "label": "CFTC positioning (COT)", "date": "2026-11-06", "source": "CFTC"}, {"id": "PCE inflation", "label": "PCE inflation", "date": "2026-11-25", "source": "BEA"}, {"id": "fomc", "label": "FOMC decision + SEP", "date": "2026-12-09", "source": "Federal Reserve"}],
+ "upcoming_releases": [{"id": "cot", "label": "CFTC positioning (COT)", "date": "2026-11-06", "source": "CFTC"}, {"id": "claims", "label": "Initial jobless claims", "date": "2026-11-12", "source": "DoL"}, {"id": "PCE inflation", "label": "PCE inflation", "date": "2026-11-25", "source": "BEA"}, {"id": "fomc", "label": "FOMC decision + SEP", "date": "2026-12-09", "source": "Federal Reserve"}],
  "notes": [],
  "events": [{"id": "covid", "date": "2020-03", "category": "shock", "label": "COVID-19 shock", "description": "Emergency cuts take the target range to 0–0.25% and the Fed restarts large-scale asset purchases."}, {"id": "fait", "date": "2020-08", "category": "policy", "label": "Flexible average inflation targeting", "description": "Revised framework: the Fed aims for inflation moderately above 2% for some time after periods of undershooting."}, {"id": "liftoff", "date": "2022-03", "category": "policy", "label": "Hiking cycle begins", "description": "First rate rise since 2018, as inflation runs well above target."}, {"id": "svb", "date": "2023-03", "category": "shock", "label": "Regional bank stress", "description": "Silicon Valley Bank fails; the Fed sets up the Bank Term Funding Program."}, {"id": "peak", "date": "2023-07", "category": "policy", "label": "Final hike of the cycle", "description": "Target range reaches 5.25–5.50%, where it stays for over a year."}, {"id": "first-cut", "date": "2024-09", "category": "policy", "label": "Easing begins", "description": "A 50bp cut starts the easing cycle."}, {"id": "tariffs", "date": "2025-04", "category": "shock", "label": "Tariff shock", "description": "Broad US tariff increases announced, raising the near-term inflation outlook and growth risks."}],
  "sources": {
@@ -640,71 +640,71 @@
   },
   "fred:ICSA": {
    "ok": true,
-   "last": "2026-10-24"
+   "last": "2026-10-31"
   },
   "fred:CCSA": {
    "ok": true,
-   "last": "2026-10-17"
+   "last": "2026-10-24"
   },
   "fred:DGS3MO": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DGS6MO": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DGS1": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DGS2": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DGS5": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DGS10": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DGS30": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DFII10": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:T5YIE": {
    "ok": true,
-   "last": "2026-11-04"
+   "last": "2026-11-05"
   },
   "fred:T10YIE": {
    "ok": true,
-   "last": "2026-11-04"
+   "last": "2026-11-05"
   },
   "fred:T5YIFR": {
    "ok": true,
-   "last": "2026-11-04"
+   "last": "2026-11-05"
   },
   "fred:SOFR": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:EFFR": {
    "ok": true,
-   "last": "2026-11-03"
+   "last": "2026-11-04"
   },
   "fred:DFEDTARU": {
    "ok": true,
-   "last": "2026-11-04"
+   "last": "2026-11-05"
   },
   "fred:DFEDTARL": {
    "ok": true,
-   "last": "2026-11-04"
+   "last": "2026-11-05"
   },
   "fred:THREEFYTP10": {
    "ok": true,
